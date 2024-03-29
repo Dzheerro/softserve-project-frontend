@@ -1,6 +1,6 @@
 # From https://dev.to/rodrigokamada/creating-and-running-an-angular-application-in-a-docker-container-40mk
 # TODO: Get node version
-FROM node:alpine
+FROM node:20.11.1-alpine3.19
 
 WORKDIR /usr/src/app
 COPY . /usr/src/app
