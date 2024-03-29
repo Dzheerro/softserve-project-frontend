@@ -13,6 +13,9 @@ const httpOptions = {
 
 export class AuthService {
 
+  private authToken: string | null = null;
+  private refreshToken: string | null = null;
+
   baseUrl: string = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
@@ -26,5 +29,23 @@ export class AuthService {
     const userParams = { first_name, last_name, username, email, phone_number, password, profile_type: profileType };
     return this.http.post(this.baseUrl + 'api/v1/auth/create_user/', userParams, httpOptions);
   };
+
+  setAuthToken(token:string) {
+    this.authToken = token;
+    console.log('authToken:', this.authToken);
+  }
+
+  getAuthToken() {
+    return this.authToken;
+  }
+
+  setRefreshToken(token: string) {
+    this.refreshToken = token;
+    console.log('refreshToken:', this.refreshToken);
+  }
+
+  getRefreshToken() {
+    return this.refreshToken;
+  }
 
 }
