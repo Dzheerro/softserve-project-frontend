@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -37,15 +37,18 @@ export class LoginComponent {
     this.authService.login(username, password).subscribe(result => {
       if (result !== null) {
         this.responseData = result;
-        if (this.responseData.tokens) {
-          this.authService.setAuthToken(this.responseData.tokens.access);
-          this.authService.setRefreshToken(this.responseData.tokens.refresh);
-          this.router.navigate(["/dashboard"]);
-          this.isLoginFailed = false;
-          this.isLoggedIn = true;
-          this.reloadPage();
+
+        if (this.responseData.success === true) {
+          if (this.responseData.tokens) {
+            this.router.navigate(["/dashboard"]);
+            this.authService.setAuthToken(this.responseData.tokens.access);
+            this.authService.setRefreshToken(this.responseData.tokens.refresh);
+            
+            this.isLoginFailed = false;
+            this.isLoggedIn = true;
+          }
         }
       }
     });
-  }  
+  }
 };
