@@ -7,6 +7,7 @@
         <ol>
             <li><a routerLink="/register">Create Account</a></li>
             <li><a routerLink="/login">Sign In</a></li>
+            <li><a class="red" routerLink="/" *ngIf="username !== null">{{ username }}</a></li>
             <li>
                 <a href="#">Menu</a>
                 <ul class="dropdown">
