@@ -1,4 +1,4 @@
 export const environment = {
-    production: true,
-    baseUrl: 'https://api.appelsin.stage.dnull.systems'
+    production: false,
+    baseUrl: 'https://api.appelsin.stage.dnull.systems/'
 };
