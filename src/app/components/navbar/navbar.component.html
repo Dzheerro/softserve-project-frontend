@@ -1,22 +1,25 @@
 <div class="wrapper">
-    <nav>
-        <div class="icon"><img src="assets/images/Group.png"></div>
+    <header>
+        <div class="logo">
+            <a routerLink="/dashboard"><img src="/assets/images/Group.png"></a>
+        </div>
         <div class="search_box">
             <input type="search" placeholder="Search...">
         </div>
-        <ol>
-            <li><a routerLink="/register">Create Account</a></li>
-            <li><a routerLink="/login">Sign In</a></li>
-            <li><a class="red" routerLink="/" *ngIf="username !== null">{{ username }}</a></li>
-            <li>
-                <a href="#">Menu</a>
-                <ul class="dropdown">
-                    <li><a>Liked Tracks</a></li>
-                    <li><a>Playlists</a></li>
-                    <li><a>Settings</a></li>
-                    <li><a>Log Out</a></li>
-                </ul>
-            </li>
-        </ol>
-    </nav>
+        <nav>
+            <ul>
+                <li><a *ngIf="username !== null">{{username}}</a></li>
+                <li><a routerLink="/login">Sign In</a></li>
+                <li><a routerLink="/register">Create Account</a></li>
+                <li><a>Menu</a>
+                    <ul class="submenu">
+                        <li><a>Liked Tracks</a></li>
+                        <li><a>Playlists</a></li>
+                        <li><a>Settings</a></li>
+                        <li><a>Log Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
 </div>
