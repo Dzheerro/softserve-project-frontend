@@ -1,78 +1,155 @@
-nav {
-    display: flex;
-    width: 100%;
+// nav {
+//     display: flex;
+//     width: 100%;
+//     background: #4E365B;
+//     position: relative;
+//     justify-content: space-between;
+//     align-items: center;
+//     padding: 15px 40px 5px 30px;
+//     font-family: Poppins, sans-serif;
+// }
+
+// nav .icon img {
+//     margin-bottom: 15px;
+//     width: 50px;
+// }
+
+// nav ol {
+//     display: flex;
+//     list-style: none;
+//     margin: 0;
+// }
+
+// nav ol li {
+//     margin: 0 30px;
+//     display: block;
+//     position: relative;
+// }
+
+// nav ol li a {
+//     display: block;
+//     position: relative;
+//     color: #fff;
+//     font-size: 20px;
+//     text-decoration: none;
+//     text-transform: capitalize;
+//     letter-spacing: 1px;
+//     white-space: nowrap;
+// }
+
+// ol li ul.dropdown li {
+//     display: inline-block;
+//     background: #4E365B;
+//     padding: 5px;
+// }
+
+// ol li ul.dropdown {
+//     width: 100%;
+//     position: absolute;
+//     z-index: 999;
+//     display: none;
+//     right: 70px;
+// }
+
+// ol li a:hover {
+//     background: #4E365B;
+// }
+
+// ol li:hover ul.dropdown {
+//     display: block;
+// }
+
+
+.wrapper {
     background: #4E365B;
-    position: relative;
+
+    .logo {
+        img {
+            width: 70px;
+            margin-right: 50px;
+        }
+
+    }
+
+    .search_box {
+        display: flex;
+        margin: auto 0;
+        height: 35px;
+        line-height: 35px;
+
+        input {
+            border: 1px solid black;
+            border-radius: 10px;
+            outline: none;
+            background: #fff;
+            height: 100%;
+            padding: 0 10px;
+            font-size: 20px;
+            width: 300px;
+        }
+    }
+}
+
+
+
+header {
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 40px 5px 30px;
-    font-family: Poppins, sans-serif;
-}
-
-nav .icon img {
-    margin-bottom: 15px;
-    width: 50px;
-}
-
-nav ol {
-    display: flex;
-    list-style: none;
-    margin: 0;
-}
-
-nav ol li {
-    margin: 0 30px;
-    display: block;
-    position: relative;
-}
-
-nav ol li a {
-    display: block;
-    position: relative;
-    color: #fff;
-    font-size: 20px;
-    text-decoration: none;
-    text-transform: capitalize;
-    letter-spacing: 1px;
-    white-space: nowrap;
-}
-
-ol li ul.dropdown li {
-    display: inline-block;
-    background: #4E365B;
-    padding: 5px;
-}
-
-ol li ul.dropdown {
     width: 100%;
-    position: absolute;
-    z-index: 999;
-    display: none;
-    right: 70px;
-}
+    padding: 0 140px;
+    border-bottom: 1px solid black;
 
-ol li a:hover {
-    background: #4E365B;
-}
+    ul li {
+        display: inline-block;
+        list-style: none;
+        margin: 20px 30px;
+        font-family: Inter, sans-serif;
+    }
 
-ol li:hover ul.dropdown {
-    display: block;
-}
+    ul li a {
+        text-decoration: none;
+        text-transform: capitalize;
+        color: #fff;
+        padding: 22px 0;
+        display: inline-block;
+        transition: all ease 0.3s;
+        font-size: 20px;
+    }
 
-nav .search_box {
-    display: flex;
-    margin: auto 0;
-    height: 35px;
-    line-height: 35px;
-}
+    ul li a:hover {
+        color: gray;
+    }
 
-nav .search_box input {
-    border: 1px solid black;
-    border-radius: 10px;
-    outline: none;
-    background: #fff;
-    height: 100%;
-    padding: 0 10px;
-    font-size: 20px;
-    width: 300px;
+    ul .submenu {
+        position: absolute;
+        width: 200px; 
+        background-color: #7B7381;
+        box-shadow: 0 20px 45px grey;
+        margin-top: -50px;
+        opacity: 0;
+        z-index: -999;
+        transition: all ease 0.5s;
+    }
+
+    ul li:hover .submenu {
+        z-index: 99;
+        opacity: 1;
+        margin-top: 0 ;
+    }
+
+    ul .submenu li {
+        margin: 0;
+        width: 100%;
+    }
+    
+    ul .submenu li a {
+        padding: 15px 20px;
+        display: inline-block;
+        width: 100%;
+    }
+
+    .submenu li a:hover {
+        color: black;
+    }
 }
