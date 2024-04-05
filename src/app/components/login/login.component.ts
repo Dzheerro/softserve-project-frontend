@@ -7,6 +7,7 @@ import { AuthService } from '../../services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { UserDataJwtService } from '../../services/user-data-jwt.service';
+import { TokenInterceptor } from '../../services/token.interceptor';
 
 @Component({
   selector: 'app-login',
@@ -32,10 +33,6 @@ export class LoginComponent {
 
   constructor(private authService: AuthService,private userDataJwtService: UserDataJwtService , private router: Router) { }
 
-  reloadPage(): void {
-    window.location.reload();
-  }
-
   onSubmit() {
     const { username, password } = this.form;
 
@@ -52,9 +49,10 @@ export class LoginComponent {
             localStorage.setItem('Refresh', this.responseData.tokens.refresh);
 
             /*` Setting Tokens in Methods `*/
-            this.authService.setAuthToken(this.responseData.tokens.access);
-            this.authService.setRefreshToken(this.responseData.tokens.refresh);
-
+            TokenInterceptor.accessToken = this.responseData.tokens.access;
+            TokenInterceptor.refreshToken = this.responseData.tokens.refresh;
+            TokenInterceptor.isExpired = this.decodedToken.exp;
+            
             /*` Decoding Access Token ang Setting Data in Methods `*/
             this.decodedToken = this.helper.decodeToken(this.responseData.tokens.access);
             this.userDataJwtService.setProfileType(this.decodedToken.profile_type);
