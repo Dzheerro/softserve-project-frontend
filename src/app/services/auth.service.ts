@@ -12,10 +12,8 @@ const httpOptions = {
 })
 
 export class AuthService {
-
-  private authToken: string | null = null;
-  private refreshToken: string | null = null;
-
+  accessToken = localStorage.getItem('Access');
+  refreshToken = localStorage.getItem('Refresh');
   baseUrl: string = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
@@ -30,22 +28,8 @@ export class AuthService {
     return this.http.post(this.baseUrl + 'api/v1/auth/create_user/', userParams, httpOptions);
   };
 
-  setAuthToken(token:string) {
-    this.authToken = token;
-    console.log('authToken:', this.authToken);
+  logOut() {
+    const refreshToken = {refresh: this.refreshToken}
+    return this.http.post(this.baseUrl + 'api/v1/auth/logout/', refreshToken, httpOptions);
   }
-
-  getAuthToken() {
-    return this.authToken;
-  }
-
-  setRefreshToken(token: string) {
-    this.refreshToken = token;
-    console.log('refreshToken:', this.refreshToken);
-  }
-
-  getRefreshToken() {
-    return this.refreshToken;
-  }
-
 }
