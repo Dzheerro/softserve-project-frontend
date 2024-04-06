@@ -11,22 +11,18 @@ export class UserDataJwtService {
   private username: string | null = null;
 
   setProfileType(profile_type:string) {
-    this.profile_type = profile_type;
-    console.log('Profile Type:', profile_type);
-    return profile_type;
+    return localStorage.setItem('profile_type', profile_type);
   }
 
   setUsername(username:string) {
-    this.username = username;
-    console.log('Username:', username);
-    return username;
+    return localStorage.setItem('username', username);
   } 
 
   getUserProfileType() {
-    return this.profile_type;
+    return localStorage.getItem('profile_type');
   }
 
   getUsername() {
-    return this.username;
+    return localStorage.getItem('username');
   }
 }

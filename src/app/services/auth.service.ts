@@ -14,6 +14,7 @@ const httpOptions = {
 export class AuthService {
   accessToken = localStorage.getItem('Access');
   refreshToken = localStorage.getItem('Refresh');
+  isLoggedIn: boolean = false;
   baseUrl: string = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
@@ -31,5 +32,10 @@ export class AuthService {
   logOut() {
     const refreshToken = {refresh: this.refreshToken}
     return this.http.post(this.baseUrl + 'api/v1/auth/logout/', refreshToken, httpOptions);
+  }
+
+  isLoggedIn$(): boolean {
+    const accessToken = localStorage.getItem('Access');
+    return !!accessToken;
   }
 }
