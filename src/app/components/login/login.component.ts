@@ -28,10 +28,11 @@ export class LoginComponent {
   errorMessage = '';
   responseData: any;
   decodedToken: any;
+  checkTokenToExpired: any;
 
   helper = new JwtHelperService;
 
-  constructor(private authService: AuthService,private userDataJwtService: UserDataJwtService , private router: Router) { }
+  constructor(private authService: AuthService, private userDataJwtService: UserDataJwtService, private router: Router) { }
 
   onSubmit() {
     const { username, password } = this.form;
@@ -43,7 +44,7 @@ export class LoginComponent {
         if (this.responseData.success === true) {
           if (this.responseData.tokens) {
             this.router.navigate(["/dashboard"]);
-            
+
             /*` Adding Tokens To Local Storage `*/
             localStorage.setItem('Access', this.responseData.tokens.access);
             localStorage.setItem('Refresh', this.responseData.tokens.refresh);
@@ -51,13 +52,13 @@ export class LoginComponent {
             /*` Setting Tokens in Methods `*/
             TokenInterceptor.accessToken = this.responseData.tokens.access;
             TokenInterceptor.refreshToken = this.responseData.tokens.refresh;
-            TokenInterceptor.isExpired = this.decodedToken.exp;
-            
+            TokenInterceptor.decodedToken = this.decodedToken;
+
             /*` Decoding Access Token ang Setting Data in Methods `*/
             this.decodedToken = this.helper.decodeToken(this.responseData.tokens.access);
             this.userDataJwtService.setProfileType(this.decodedToken.profile_type);
             this.userDataJwtService.setUsername(this.decodedToken.username);
-            
+
             this.isLoginFailed = false;
             this.isLoggedIn = true;
           }
