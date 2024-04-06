@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { UserDataJwtService } from '../../services/user-data-jwt.service';
 import { CommonModule } from '@angular/common';
@@ -22,6 +22,10 @@ export class NavbarComponent {
 
   constructor (private userDataJwtService: UserDataJwtService, private http: HttpClient, private authService: AuthService, private router: Router) {
     this.username = this.userDataJwtService.getUsername();
+  }
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn$();
   }
 
   logOut() {

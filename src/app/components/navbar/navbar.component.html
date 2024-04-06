@@ -9,8 +9,8 @@
         <nav>
             <ul>
                 <li><a *ngIf="username !== null">{{username}}</a></li>
-                <li><a routerLink="/login">Sign In</a></li>
-                <li><a routerLink="/register">Create Account</a></li>
+                <li><a *ngIf="!isLoggedIn()" routerLink="/login">Sign In</a></li>
+                <li><a *ngIf="!isLoggedIn()" routerLink="/register">Create Account</a></li>
                 <li><a>Menu</a>
                     <ul class="submenu">
                         <li><a>Liked Tracks</a></li>
