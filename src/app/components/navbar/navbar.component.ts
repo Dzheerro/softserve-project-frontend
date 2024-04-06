@@ -17,11 +17,16 @@ import { TokenInterceptor } from '../../services/token.interceptor';
 })
 export class NavbarComponent {
   username: string | null;
+  profileType: string | null;
   baseUrl: string = environment.baseUrl;
-  refreshToken = localStorage.getItem('Refresh');
 
   constructor (private userDataJwtService: UserDataJwtService, private http: HttpClient, private authService: AuthService, private router: Router) {
     this.username = this.userDataJwtService.getUsername();
+    this.profileType = this.userDataJwtService.getUserProfileType();
+  }
+
+  isArtist(): boolean {
+    return this.profileType === 'Artist';
   }
 
   isLoggedIn(): boolean {
@@ -34,6 +39,8 @@ export class NavbarComponent {
       TokenInterceptor.refreshToken = '';
       localStorage.removeItem('Access');
       localStorage.removeItem('Refresh');
+      localStorage.removeItem('profile_type');
+      localStorage.removeItem('username');
       this.router.navigate(['/login']);
     })
   }

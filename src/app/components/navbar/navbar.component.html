@@ -8,8 +8,9 @@
         </div>
         <nav>
             <ul>
-                <li><a *ngIf="username !== null">{{username}}</a></li>
+                <li><a *ngIf="username">{{username}}</a></li>
                 <li><a *ngIf="!isLoggedIn()" routerLink="/login">Sign In</a></li>
+                <li><a *ngIf="isLoggedIn() && isArtist()">Create Track</a></li>
                 <li><a *ngIf="!isLoggedIn()" routerLink="/register">Create Account</a></li>
                 <li><a>Menu</a>
                     <ul class="submenu">
