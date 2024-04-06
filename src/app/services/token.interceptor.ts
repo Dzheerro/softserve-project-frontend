@@ -14,12 +14,20 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  static accessToken = '';
-  static refreshToken = '';
+  static accessToken: string | null = null;
+  static refreshToken: string | null = null;
   static decodedToken: any = '';
   baseUrl: string = environment.baseUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    const storedAccessToken = localStorage.getItem('Access');
+    const storedRefreshToken = localStorage.getItem('Refresh');
+
+    if (storedAccessToken && storedRefreshToken) {
+      TokenInterceptor.accessToken = storedAccessToken;
+      TokenInterceptor.refreshToken = storedRefreshToken;
+    }
+  }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -27,9 +35,9 @@ export class TokenInterceptor implements HttpInterceptor {
       setHeaders: {
         Authorization: `Bearer ${TokenInterceptor.accessToken}`
       }
-    })
+    });
 
-    if (request.url.includes('/api/v1/auth/token/')) {
+    if (request.url.includes('/api/v1/auth/token/') || request.url.includes('/api/v1/auth/create_user/')) {
       return next.handle(request);
     }
 
@@ -38,7 +46,7 @@ export class TokenInterceptor implements HttpInterceptor {
         const decodedToken = TokenInterceptor.decodedToken;
         const isExpired = decodedToken && decodedToken.exp ? decodedToken.exp < Date.now() / 1000 : false;
 
-        if (err.status === 401 && isExpired) {
+        if (err.status === 401 && isExpired && TokenInterceptor.refreshToken) {
           return this.http.post(this.baseUrl + 'api/v1/auth/refresh_token/' + TokenInterceptor.refreshToken, {}).pipe(
             switchMap((res: any) => {
               TokenInterceptor.accessToken = res.tokens.access;

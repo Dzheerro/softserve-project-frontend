@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -12,7 +12,7 @@ import { TokenInterceptor } from '../../services/token.interceptor';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
