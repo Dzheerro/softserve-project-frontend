@@ -16,9 +16,8 @@ export class TokenInterceptor implements HttpInterceptor {
 
   static accessToken = '';
   static refreshToken = '';
-  static isExpired = '';
+  static decodedToken: any = '';
   baseUrl: string = environment.baseUrl;
-  refresh = false;
 
   constructor(private http: HttpClient) { }
 
@@ -36,12 +35,13 @@ export class TokenInterceptor implements HttpInterceptor {
 
     return next.handle(req).pipe(
       catchError((err: HttpErrorResponse) => {
-        if (err.status === 401 && !this.refresh) {
-          this.refresh = true;
+        const decodedToken = TokenInterceptor.decodedToken;
+        const isExpired = decodedToken && decodedToken.exp ? decodedToken.exp < Date.now() / 1000 : false;
+
+        if (err.status === 401 && isExpired) {
           return this.http.post(this.baseUrl + 'api/v1/auth/refresh_token/' + TokenInterceptor.refreshToken, {}).pipe(
             switchMap((res: any) => {
               TokenInterceptor.accessToken = res.tokens.access;
-              this.refresh = false;
               const authReq = request.clone({
                 setHeaders: {
                   Authorization: `Bearer ${TokenInterceptor.accessToken}`
@@ -50,7 +50,6 @@ export class TokenInterceptor implements HttpInterceptor {
               return next.handle(authReq);
             }),
             catchError((error: any) => {
-              this.refresh = false;
               return throwError(error);
             })
           );
