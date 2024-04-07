@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { UserDataJwtService } from '../../services/user-data-jwt.service';
+import { UserDataJwtService } from '../../services/auth/user-data-jwt.service';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { environment } from '../../../environments/environment';
 import { TokenInterceptor } from '../../helpers/token.interceptor';
 

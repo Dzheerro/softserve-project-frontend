@@ -3,10 +3,10 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { UserDataJwtService } from '../../services/user-data-jwt.service';
+import { UserDataJwtService } from '../../services/auth/user-data-jwt.service';
 import { TokenInterceptor } from '../../helpers/token.interceptor';
 
 @Component({
