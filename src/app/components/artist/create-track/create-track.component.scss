@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background: url('/assets/images/background-create-track.jpeg') no-repeat;
+    background-color: #402c4b;
     background-size: cover;
     background-position: center;
     height: 100%;
@@ -50,6 +50,8 @@
                 border-radius: 40px;
                 border: none;
                 background-color: #A395AA;
+                color: #FFFFFF;
+                font-size: 20px;
             }
 
             p {
@@ -77,6 +79,7 @@
             text-align: center;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
             background-color: #A395AA;
             border-radius: 25%;
 
@@ -89,6 +92,31 @@
                 font-family: Inter, sans-serif;
                 font-weight: 600;
                 font-size: 24px;
+                color: #FFFFFF;
+            }
+
+            input[type="file"] {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                width: 300px;
+                padding: 10px;
+                border-radius: 300px;
+                background-color: #A395AA;
+                cursor: pointer;
+            }
+
+            input[type="file"]::file-selector-button {
+                margin-left: 40px;
+                border-radius: 30px;
+                border: none;
+                background-color: #402c4b;
+                cursor: pointer;
+                padding: 10px;
+                font-family: Inter, sans-serif;
+                font-weight: 500;
+                font-size: 18px;
                 color: #FFFFFF;
             }
         }
@@ -125,6 +153,31 @@
                 border: none;
                 color: #FFFFFF;
             }
+
+            input[type="file"] {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                width: 300px;
+                padding: 10px;
+                border-radius: 300px;
+                background-color: #A395AA;
+                cursor: pointer;
+            }
+
+            input[type="file"]::file-selector-button {
+                margin-left: 40px;
+                border-radius: 30px;
+                border: none;
+                background-color: #402c4b;
+                cursor: pointer;
+                padding: 10px;
+                font-family: Inter, sans-serif;
+                font-weight: 500;
+                font-size: 18px;
+                color: #FFFFFF;
+            }
         }
 
         .button__add {
@@ -138,11 +191,15 @@
                 font-size: 20px;
                 font-weight: 500;
                 font-family: Inter, sans-serif;
-                text-transform: uppercase;
                 background-color: #A395AA;
+                letter-spacing: 4px;
                 border: none;
                 color: #FFFFFF;
+            }
 
+            button:hover {
+                transition: .4s;
+                color: #514d4d;
             }
         }
     }

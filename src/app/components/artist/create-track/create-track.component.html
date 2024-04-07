@@ -6,26 +6,27 @@
         <div class="container__input">
             <div class="container__input__field">
                 <p>Title of your track</p>
-                <input type="text">
+                <input type="text" [(ngModel)]="title">
             </div>
             <div class="container__input__field">
                 <p>Select an album</p>
-                <input type="text">
+                <input type="text" [(ngModel)]="albumName">
             </div>
         </div>
         <div class="container__album">
             <div class="container__album__wrapper">
                 <p>Add Album Photo</p>
+                <input type="file" (change)="onAlbumCoverChange($event)">
             </div>
         </div>
     </div>
     <div class="wrapper__buttons">
         <div class="container__button">
             <div class="button__upload">
-                <button>Upload Track</button>
+                <input type="file" (change)="onTrackFileChange($event)">
             </div>
             <div class="button__add">
-                <button>Add Track</button>
+                <button (click)="onAddTrack()">Add Track</button>
             </div>
         </div>
     </div>
