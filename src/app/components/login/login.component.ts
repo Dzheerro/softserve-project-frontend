@@ -7,7 +7,7 @@ import { AuthService } from '../../services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { UserDataJwtService } from '../../services/user-data-jwt.service';
-import { TokenInterceptor } from '../../services/token.interceptor';
+import { TokenInterceptor } from '../../helpers/token.interceptor';
 
 @Component({
   selector: 'app-login',

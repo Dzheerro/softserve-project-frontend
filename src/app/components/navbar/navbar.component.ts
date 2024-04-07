@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
 import { environment } from '../../../environments/environment';
-import { TokenInterceptor } from '../../services/token.interceptor';
+import { TokenInterceptor } from '../../helpers/token.interceptor';
 
  
 @Component({
