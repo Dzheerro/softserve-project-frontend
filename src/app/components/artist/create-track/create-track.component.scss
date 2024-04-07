@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background: url('/assets/images/background-create-track.jpeg') no-repeat;
+    background-color: #402c4b;
     background-size: cover;
     background-position: center;
     height: 100%;
@@ -50,6 +50,8 @@
                 border-radius: 40px;
                 border: none;
                 background-color: #A395AA;
+                color: #FFFFFF;
+                font-size: 20px;
             }
 
             p {
