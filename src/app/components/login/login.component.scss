@@ -1,25 +1,50 @@
 .body-wrapper {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     min-height: 100vh;
-    background: black;
+    background: url('/assets/images/background.jpeg');
     background-size: cover;
     background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.body-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 0;
+    box-shadow: inset 0 0 0 2000px rgba(78, 54, 91, 0.81);
+    pointer-events: none;
+    border-top-right-radius: 50px; 
+    border-bottom-right-radius: 50px;
 }
 
 .wrapper {
+    position: relative;
+    z-index: 1;
     width: 420px;
     background: transparent;
     color: #fff;
     border-radius: 10px;
     padding: 30px 40px;
-    border: 1px solid black;
+    margin-left: 285px;
+    
 }
 
 .wrapper h1 {
     font-size: 36px;
     text-align: center;
+    color: #fff;
+    font-family: Inter, sans-serif;
+    font-weight: 600;
+    letter-spacing: 8px;
+    margin-bottom: 47px;
+
 }
 
 .wrapper .input-box {
@@ -32,18 +57,21 @@
 .input-box input {
     width: 100%;
     height: 100%;
-    background: transparent;
+    background-color: #D4D4D4;
     border: none;
     outline: none;
     border: 2px solid rgba(255, 255, 255, .2);
     border-radius: 40px;
-    font-size: 16px;
-    color: #fff;
+    font-size: 18px;
+    color: #6A6A6A;
     padding: 20px 45px 20px 20px;
 }
 
 .input-box input::placeholder {
-    color: #fff;
+    color: #6A6A6A;
+    font-family: Inter, sans-serif;
+    font-weight: 300;
+    letter-spacing: 3px;
 
 }
 
@@ -60,6 +88,9 @@
     justify-content: space-between;
     font-size: 14.5px;
     margin: -15px 0 15px;
+    font-family: Inter , sans-serif;
+    font-weight: 500;
+    letter-spacing: 3px;
 }
 
 .remember-forgot label input {
@@ -79,15 +110,17 @@
 .wrapper .btn {
     width: 100%;
     height: 45px;
-    background: #fff;
+    background: #5B438C;
     border: none;
     outline: none;
     border-radius: 40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    text-transform: uppercase;
     cursor: pointer;
     font-size: 16px;
-    color: #333;
+    color: #FFFFFF;
     font-weight: 600;
+    letter-spacing: 6px;
 }
 
 .wrapper .register-link {
@@ -97,6 +130,9 @@
 }
 
 .register-link p a {
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    letter-spacing: 2px;
     color: #fff;
     text-decoration: none;
     font-weight: 600;
