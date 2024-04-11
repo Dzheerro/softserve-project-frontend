@@ -1,21 +1,5 @@
 <app-navbar></app-navbar>
 <app-slider></app-slider>
 
-<div class="wrapper__music">
-    <h1> TRACKS </h1>
+<app-footer></app-footer>
 
-    <button (click)="showTrack()"> PLAY TRACK </button>
-
-    <ul>
-        <li *ngFor="let track of responseData.data">
-            <p>Title: {{ track.title }}</p>
-            <p>File: {{ track.file }}</p>
-            <p>Created At: {{ track.create_at }}</p>
-            <p>Plays Count: {{ track.plays_count }}</p>
-            <button (click)="playTrack(track.id)">Play</button>
-        </li>
-        <audio controls #audioPlayer>
-            Your browser does not support the audio element.
-          </audio>
-    </ul>
-</div>
