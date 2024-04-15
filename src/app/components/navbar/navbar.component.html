@@ -14,7 +14,7 @@
                 <li><a *ngIf="!isLoggedIn()" routerLink="/register">Create Account</a></li>
                 <li><a>Menu</a>
                     <ul class="submenu">
-                        <li><a>Liked Tracks</a></li>
+                        <li><a routerLink="/likes">Liked Tracks</a></li>
                         <li><a routerLink="/playlists">Playlists</a></li>
                         <li><a>Settings</a></li>
                         <li><a (click)="logOut()">Log Out</a></li>
