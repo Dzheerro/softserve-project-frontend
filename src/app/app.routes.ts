@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 
-import { RegisterComponent } from './components/register/register.component';
-import { MainComponent } from './components/main/main.component';
-import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/authorization/register/register.component';
+import { MainComponent } from './components/landing-page/main/main.component';
+import { LoginComponent } from './components/authorization/login/login.component';
 import { CreateTrackComponent } from './components/artist/create-track/create-track.component';
 import { PlaylistsComponent } from './components/playlists/playlists.component';
 import { LikedTracksComponent } from './components/liked-tracks/liked-tracks.component';
