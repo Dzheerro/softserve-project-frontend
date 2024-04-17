@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ShowTrackService } from '../../services/show-track.service';
+import { ShowTrackService } from '../../../services/actions/show-track.service';
 
 @Component({
   selector: 'app-media',
