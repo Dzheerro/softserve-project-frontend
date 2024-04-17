@@ -1,16 +1,22 @@
 <div class="body-wrapper">
   <div class="wrapper">
-    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate autocomplete="off">
+    <form name="form" [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
       <h1>Login</h1>
       <div class="input-box">
-        <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required #username="ngModel"
-          [ngClass]="{ 'is-invalid': f.submitted && username.errors }" placeholder="Username"/>
-        <i class='bx bxs-user'></i>
+        <input type="text" class="form-control" formControlName="username"
+          [class.invalid]="form.get('username')?.invalid && (form.get('username')?.dirty || form.get('username')?.touched)"
+          placeholder="Username" />
+        <span class="error"
+          *ngIf="form.get('username')?.hasError('required') && (form.get('username')?.dirty || form.get('username')?.touched)">
+          This field is required</span>
       </div>
       <div class="input-box">
-        <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="6"
-          #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.errors }" placeholder="Password"/>
-        <i class='bx bxs-lock-alt'></i>
+        <input type="password" class="form-control" formControlName="password"
+          [class.invalid]="form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)"
+          placeholder="Password" />
+        <span class="error"
+          *ngIf="form.get('password')?.hasError('required') && (form.get('password')?.dirty || form.get('password')?.touched)">
+          This field is required</span>
       </div>
       <div class="remember-forgot">
         <a>Forgot Password?</a>
