@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 
 import { AuthService } from '../../../services/auth/auth.service';
@@ -12,16 +12,16 @@ import { TokenInterceptor } from '../../../helpers/token.interceptor';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule, RouterLink],
+  imports: [CommonModule, FormsModule, HttpClientModule, RouterLink, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
 
-  form: any = {
-    username: null,
-    password: null
-  };
+  form = this.formBuilder.group({
+    username: ['', Validators.required],
+    password: ['', Validators.required]
+  });
 
   isLoggedIn = false;
   isLoginFailed = false;
@@ -32,38 +32,44 @@ export class LoginComponent {
 
   helper = new JwtHelperService;
 
-  constructor(private authService: AuthService, private userDataJwtService: UserDataJwtService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private userDataJwtService: UserDataJwtService, private router: Router) { }
 
   onSubmit() {
-    const { username, password } = this.form;
 
-    this.authService.login(username, password).subscribe(result => {
-      if (result !== null) {
-        this.responseData = result;
+    if (this.form.valid) {
+      const username = this.form.get('username')?.value;
+      const password = this.form.get('password')?.value;
 
-        if (this.responseData.success === true) {
-          if (this.responseData.tokens) {
-            this.router.navigate(["/dashboard"]);
+      if (username && password) {
+        this.authService.login(username, password).subscribe(result => {
+          if (result !== null) {
+            this.responseData = result;
 
-            /*` Adding Tokens To Local Storage `*/
-            localStorage.setItem('Access', this.responseData.tokens.access);
-            localStorage.setItem('Refresh', this.responseData.tokens.refresh);
+            if (this.responseData.success === true) {
+              if (this.responseData.tokens) {
+                this.router.navigate(["/dashboard"]);
 
-            /*` Setting Tokens in Methods `*/
-            TokenInterceptor.accessToken = this.responseData.tokens.access;
-            TokenInterceptor.refreshToken = this.responseData.tokens.refresh;
-            TokenInterceptor.decodedToken = this.decodedToken;
+                /*` Adding Tokens To Local Storage `*/
+                localStorage.setItem('Access', this.responseData.tokens.access);
+                localStorage.setItem('Refresh', this.responseData.tokens.refresh);
 
-            /*` Decoding Access Token ang Setting Data in Methods `*/
-            this.decodedToken = this.helper.decodeToken(this.responseData.tokens.access);
-            this.userDataJwtService.setProfileType(this.decodedToken.profile_type);
-            this.userDataJwtService.setUsername(this.decodedToken.username);
+                /*` Setting Tokens in Methods `*/
+                TokenInterceptor.accessToken = this.responseData.tokens.access;
+                TokenInterceptor.refreshToken = this.responseData.tokens.refresh;
+                TokenInterceptor.decodedToken = this.decodedToken;
 
-            this.isLoginFailed = false;
-            this.isLoggedIn = true;
+                /*` Decoding Access Token ang Setting Data in Methods `*/
+                this.decodedToken = this.helper.decodeToken(this.responseData.tokens.access);
+                this.userDataJwtService.setProfileType(this.decodedToken.profile_type);
+                this.userDataJwtService.setUsername(this.decodedToken.username);
+
+                this.isLoginFailed = false;
+                this.isLoggedIn = true;
+              }
+            }
           }
-        }
+        });
       }
-    });
+    }
   }
 };
