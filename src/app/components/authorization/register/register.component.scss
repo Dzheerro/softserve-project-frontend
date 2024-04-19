@@ -1,97 +1,112 @@
-.body-wrapper {
+.wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100vh;
+  width: 100%;
+  background: url('/assets/images/background-register.png') no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 0;
+    box-shadow: inset 0 0 0 2000px rgba(174, 174, 174, 0.31);
+    pointer-events: none;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+  }
+
+  &__container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background: black;
-    background-size: cover;
-    background-position: center;
-  }
+    margin-left: 220px;
+    margin-top: 30px;
 
-.wrapper {
-    border: 1px solid black;
-    width: 750px;
-    background: transparent;
-    border-radius: 10px;
-    color: #fff;
-    padding: 40px 35px 55px;
+    &__header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      font-family: Inter, sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      text-transform: uppercase;
+      line-height: 30px;
+      color: #FFFFFF;
+
+    }
+
+    .input-box {
+      position: relative;
+      width: 100%;
+      height: 50px;
+      margin: 30px 0;
+
+      input {
+        width: 330px;
+        height: 100%;
+        background: #D4D4D4;
+        border: 2px solid rgba(255, 255, 255, .2);
+        border-radius: 40px;
+        font-size: 18px;
+        color: #6A6A6A;
+        padding: 20px 45px 20px 20px;
+      }
+    }
+
+    .checkbox {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      text-align: start;
+      margin-left: 20px;
+
+      label {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: center;
+        font-family: Inter, sans-serif;
+        font-weight: 700;
+        font-size: 15px;
+        color: #FFFFFF;
+      }
+
+      input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        margin-right: 20px;
+      }
+    }
+
+    .block {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      margin-top: 20px;
+
+      .btn {
+        width: 250px;
+        padding: 12px;
+
+        background-color: #3F3D40;
+        border-radius: 40px;
+
+        color: #FFFFFF;
+        font-family: Inter, sans-serif;
+        font-weight: 600;
+        font-size: 18px;
+      }
+    }
   }
-  
-  .wrapper h1 {
-    font-size: 36px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .wrapper .input-box {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  
-  .input-box .input-field {
-    position: relative;
-    width: 48%;
-    height: 50px;
-    margin: 13px 0;
-    
-  }
-  
-  .input-box .input-field input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, .2);
-    outline: none;
-    font-size: 16px;
-    color: #fff;
-    border-radius: 6px;
-    padding: 15px 15px 15px 40px;
-    
-  }
-  
-  .input-box .input-field input::placeholder {
-    color: #fff;
-  }
-  
-  .input-box .input-field i {
-    position: absolute;
-    left: 20px;
-    top: 30%;
-    transform: translateX(-50%);
-    font-size: 20px;
-  }
-  
-  .wrapper label {
-    display: inline-block;
-    font-size: 14.5px;
-    margin: 10px 0 10px;
-  }
-  
-  .wrapper label input {
-    accent-color: #fff;
-    margin-right: 5px;
-  }
-  
-  .wrapper label a {
-    text-decoration: none;
-    color: #fff;
-  }
-  
-  .wrapper .btn {
-    width: 100%;
-    height: 45px;
-    background: #fff;
-    border: none;
-    outline: none;
-    border-radius: 6px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-    cursor: pointer;
-    font-size: 16px;
-    color: #333;
-    font-weight: 600;
-  }
-  
-  .inputs label{
-    margin: 20px;
-  }
+}
