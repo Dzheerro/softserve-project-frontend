@@ -31,6 +31,7 @@
         align-items: center;
         text-align: center;
         flex-wrap: wrap;
+        width: 1600px;
 
         &__block {
             display: flex;
@@ -39,8 +40,7 @@
             text-align: center;
 
             margin-bottom: 70px;
-
-            width: 400px;
+            width: 500px;
 
             img {
                 width: 300px;
