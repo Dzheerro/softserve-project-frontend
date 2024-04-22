@@ -10,19 +10,40 @@
 
     &__header {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         text-align: center;
-
-        font-family: Inter, sans-serif;
-        text-transform: uppercase;
-        font-weight: 600;
-        font-size: 40px;
-        line-height: 30px;
 
         color: #FFFFFF;
         margin-bottom: 30px;
         margin-top: 30px;
+
+        width: 1400px;
+
+        &__title {
+            font-family: Inter, sans-serif;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 40px;
+            line-height: 30px;
+        }
+
+        &__button {
+            font-family: Inter, sans-serif;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 28px;
+            line-height: 30px;
+
+            button {
+                border-radius: 30px;
+                padding: 15px;
+                background-color: #3F3D40;
+                color: #FFFFFF;
+            }
+            
+        }
+        
     }
 
     &__playlist {
