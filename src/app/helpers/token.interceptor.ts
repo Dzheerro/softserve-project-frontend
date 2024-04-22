@@ -14,8 +14,8 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  static accessToken: string | null = null;
-  static refreshToken: string | null = null;
+  static accessToken: string;
+  static refreshToken: string;
   static decodedToken: any = '';
   baseUrl: string = environment.baseUrl;
 
@@ -31,13 +31,11 @@ export class TokenInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    const req = request.clone({
-      setHeaders: {
-        Authorization: `Bearer ${TokenInterceptor.accessToken}`
-      }
-    });
+    const req = this.addAuthorizationHeader(request);
 
-    if (request.url.includes('/api/v1/auth/token/') || request.url.includes('/api/v1/auth/create_user/')) {
+    const isUnauthenticatedURL = request.url.includes('/api/v1/auth/token/') || request.url.includes('/api/v1/auth/create_user/');
+
+    if (isUnauthenticatedURL) {
       return next.handle(request);
     }
 
@@ -50,6 +48,10 @@ export class TokenInterceptor implements HttpInterceptor {
           return this.http.post(this.baseUrl + 'api/v1/auth/refresh_token/' + TokenInterceptor.refreshToken, {}).pipe(
             switchMap((res: any) => {
               TokenInterceptor.accessToken = res.tokens.access;
+
+              localStorage.setItem('Access', TokenInterceptor.accessToken);
+              localStorage.setItem('Refresh', TokenInterceptor.refreshToken);
+
               const authReq = request.clone({
                 setHeaders: {
                   Authorization: `Bearer ${TokenInterceptor.accessToken}`
@@ -65,5 +67,19 @@ export class TokenInterceptor implements HttpInterceptor {
         return throwError(() => err);
       })
     );
+  }
+
+  private addAuthorizationHeader(request: HttpRequest<any>): HttpRequest<any> {
+
+    const accessToken = localStorage.getItem('Access');
+
+    if (accessToken) {
+      return request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      });
+    }
+    return request;
   }
 }
