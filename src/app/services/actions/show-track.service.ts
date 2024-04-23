@@ -15,4 +15,11 @@ export class ShowTrackService {
   showTrack(): Observable <any> {
     return this.http.get(this.baseUrl + 'api/v1/tracks');
   }
+
+  playTrack(trackId: number) {
+    return this.http.get(this.baseUrl + `api/v1/tracks/?track_id=${trackId}`).subscribe( (response) => {
+      console.log('RESPOSE', response);
+      
+    })
+  }
 }
