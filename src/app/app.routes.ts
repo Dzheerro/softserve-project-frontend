@@ -7,6 +7,7 @@ import { CreateTrackComponent } from './components/artist/create-track/create-tr
 import { PlaylistsComponent } from './components/playlists/playlists.component';
 import { LikedTracksComponent } from './components/liked-tracks/liked-tracks.component';
 import { CreatePlaylistComponent } from './components/create-playlist/create-playlist.component';
+import { PlayComponent } from './components/play/play.component';
 
 
 export const routes: Routes = [
@@ -20,5 +21,7 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     
     { path: 'playlists', component: PlaylistsComponent},
-    { path: 'likes', component: LikedTracksComponent}
+    { path: 'likes', component: LikedTracksComponent},
+    { path: 'player/:id', component: PlayComponent}
+    
 ];

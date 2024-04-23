@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: #402c4b;
+    background: url('/assets/images/create-track.png') no-repeat; 
     background-size: cover;
     background-position: center;
     height: 100%;
@@ -49,7 +49,7 @@
                 margin-bottom: 40px;
                 border-radius: 40px;
                 border: none;
-                background-color: #A395AA;
+                background-color: #3F3D40;
                 color: #FFFFFF;
                 font-size: 20px;
             }
@@ -80,7 +80,7 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            background-color: #A395AA;
+            background-color: #3F3D40;
             border-radius: 25%;
 
             p {
@@ -103,7 +103,7 @@
                 width: 300px;
                 padding: 10px;
                 border-radius: 300px;
-                background-color: #A395AA;
+                background-color: #3F3D40;
                 cursor: pointer;
             }
 
@@ -111,7 +111,7 @@
                 margin-left: 40px;
                 border-radius: 30px;
                 border: none;
-                background-color: #402c4b;
+                background-color: #464347f5;
                 cursor: pointer;
                 padding: 10px;
                 font-family: Inter, sans-serif;
@@ -142,7 +142,7 @@
 
             button {
                 text-transform: uppercase;
-                background-color: #A395AA;
+                background-color: #3F3D40;
                 font-size: 22px;
                 font-weight: 500;
                 font-family: Inter, sans-serif;
@@ -162,7 +162,7 @@
                 width: 300px;
                 padding: 10px;
                 border-radius: 300px;
-                background-color: #A395AA;
+                background-color: #3F3D40;
                 cursor: pointer;
             }
 
@@ -170,7 +170,7 @@
                 margin-left: 40px;
                 border-radius: 30px;
                 border: none;
-                background-color: #402c4b;
+                background-color: #464347f5;
                 cursor: pointer;
                 padding: 10px;
                 font-family: Inter, sans-serif;
@@ -191,7 +191,7 @@
                 font-size: 20px;
                 font-weight: 500;
                 font-family: Inter, sans-serif;
-                background-color: #A395AA;
+                background-color: #3F3D40;
                 letter-spacing: 4px;
                 border: none;
                 color: #FFFFFF;
