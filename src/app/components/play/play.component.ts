@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NavbarComponent } from '../landing-page/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../landing-page/footer/footer.component';
@@ -9,11 +9,11 @@ import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-play',
   standalone: true,
-  imports: [CommonModule,NavbarComponent, FooterComponent],
+  imports: [CommonModule, NavbarComponent, FooterComponent],
   templateUrl: './play.component.html',
   styleUrl: './play.component.scss'
 })
-export class PlayComponent implements OnInit{
+export class PlayComponent implements AfterViewInit{
 
   trackId: any;
   responseData: any = '';
@@ -22,18 +22,18 @@ export class PlayComponent implements OnInit{
 
   constructor(private route: ActivatedRoute, private trackService: ShowTrackService) {}
 
-  ngOnInit(): void {
-    this.route.params.subscribe( (param: Params) => {
-     this.trackId = +param['id'];
-      this.trackService.playTrack(this.trackId);
-    })
+  isPlayed: boolean = false;
+  duration: string = '3:14'
+  trackDuration: any;
+
+  ngAfterViewInit(): void {
+    this.playTrack();
   }
 
   playTrack() {
-    const audioPlayer: HTMLAudioElement = this.audioPlayerRef.nativeElement;
-    const trackUrl = `${this.baseUrl}api/v1/tracks/?track_id=${this.trackId}`;
-    audioPlayer.src = trackUrl;
-    audioPlayer.play();
-  } 
-
+    this.route.params.subscribe((param: Params) => {
+      this.trackId = +param['id'];
+      this.trackService.playTrack(this.trackId);
+    })
+  }
 }
