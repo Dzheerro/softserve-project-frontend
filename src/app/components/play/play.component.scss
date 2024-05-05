@@ -91,7 +91,26 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
+        margin-top: 30px;
         width: 600px;
+
+        &__progress {
+            margin-bottom: 10px;
+
+            height: 5px;
+            width: 600px;
+            background-color: black;
+
+
+            &__bar {
+                height: 5px;
+                width: 600px;
+                background-color: grey;
+                transition: all 0.3s;
+                position: relative;
+            }
+        }
 
         &__time {
             display: flex;
@@ -112,7 +131,6 @@
                 font-size: 16px;
             }
         }
-
     }
 
 }
