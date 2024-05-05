@@ -100,13 +100,13 @@
 
             height: 5px;
             width: 600px;
-            background-color: black;
+            background-color: grey;
 
 
             &__bar {
                 height: 5px;
                 width: 600px;
-                background-color: grey;
+                background-color: black;
                 transition: all 0.3s;
                 position: relative;
             }

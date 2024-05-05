@@ -22,6 +22,6 @@ export class ShowTrackService {
   }
 
   getTrackFile(trackId: number) {
-    return this.http.get(this.baseUrl + `api/v1/tracks/?track_id_file=${trackId}`)
+    return this.http.get(this.baseUrl + `api/v1/tracks/?track_id_file=${trackId}`, {responseType: 'blob'})
   }
 }
