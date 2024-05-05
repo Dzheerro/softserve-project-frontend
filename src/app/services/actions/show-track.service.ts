@@ -17,17 +17,11 @@ export class ShowTrackService {
     return this.http.get(this.baseUrl + 'api/v1/tracks');
   }
 
-  async playTrack(trackId: number) {
-    return this.http.get(this.baseUrl + `api/v1/tracks/?track_id=${trackId}`, { responseType:'blob'}).subscribe(async (response) => {
-      this.baseUrl + `api/v1/tracks/?track_id=${trackId}`
-      const audioContext = new window.AudioContext();
-      audioContext.resume();
+  getTrack(trackId: number) {
+    return this.http.get(this.baseUrl + `api/v1/tracks/?track_id=${trackId}`);
+  }
 
-      const buffer = await response.arrayBuffer();
-      audioContext.decodeAudioData(buffer, function (buffer) {
-        let duration = buffer.duration
-        console.log(duration);
-      })
-    })
+  getTrackFile(trackId: number) {
+    return this.http.get(this.baseUrl + `api/v1/tracks/?track_id_file=${trackId}`)
   }
 }
