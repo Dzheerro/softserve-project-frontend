@@ -5,6 +5,7 @@ import { FooterComponent } from '../landing-page/footer/footer.component';
 import { ActivatedRoute, Params, Route } from '@angular/router';
 import { ShowTrackService } from '../../services/actions/show-track.service';
 import { environment } from '../../../environments/environment';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-play',
@@ -26,6 +27,7 @@ export class PlayComponent implements OnInit, AfterViewInit {
   trackUrl!: string;
   trackTitle!: string;
 
+  isLiked: boolean = false;
   isPlaying: boolean = false;
 
   trackDuration: any;
@@ -52,6 +54,18 @@ export class PlayComponent implements OnInit, AfterViewInit {
     this.audioPlayer = this.player.nativeElement;
     this.loadTrack();
     this.updateTrackInfo();
+  }
+
+  addLike$(trackId: number) {
+    this.trackService.addLike(trackId).subscribe((result) => {
+      console.log(result);
+    })
+  } 
+
+  removeLike$(trackId: number) {
+    this.trackService.removeLike(trackId).subscribe((result) => {
+      console.log(result);
+    })
   }
 
   getTrackInfo$(trackId: number) {
