@@ -33,4 +33,8 @@ export class ShowTrackService {
   removeLike(trackId: number) {
     return this.http.delete(`${this.baseUrl}api/v1/like_tracks/${trackId}`);
   }
+
+  getLikedTracks() {
+    return this.http.get(this.baseUrl + 'api/v1/like_tracks/');
+  }
 }
