@@ -1,45 +1,191 @@
 .wrapper {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     text-align: center;
+    flex-direction: column;
 
-    height: 100vh;
     width: 100%;
+    height: 100vh;
 
-    &__header {
+    &__container {
         display: flex;
         justify-content: center;
         align-items: center;
-        text-align: center;
-
+        flex-direction: row;
         background-color: #D9D9D9;
-        width: 100%;
+
         height: 400px;
+        width: 100%;
 
         &__image {
             width: 300px;
-            height: 280px;
-
-            border-radius: 20px;
-            background-size: cover;
-            background-position: center;
+            margin-right: 200px;
+            margin-top: 15px;
+            margin-bottom: 15px;
 
             img {
                 width: 300px;
-                height: 300px;
-
-                border-radius: 20px;
-                background-size: cover;
-                background-position: center;
+                border-radius: 15px;
             }
         }
 
         &__title {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            text-align: start;
+
+            margin-left: 5em;
             font-family: Inter, sans-serif;
-            font-size: 38px;
-            font-weight: 700;
+            font-size: 40px;
+            font-weight: 600;
             text-transform: uppercase;
+            color: #FFFFFF;
+
+            width: 500px;
         }
+    }
+
+    &__content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        background-color: #8e8792;
+
+        width: 100%;
+        height: 100%;
+
+        &__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+
+            border-bottom: 2px solid #FFFFFF;
+            width: 1300px;
+            height: 70px;
+
+            &__title {
+                font-family: Inter, sans-serif;
+                text-transform: uppercase;
+                font-size: 17px;
+                font-weight: 500;
+                color: #FFFFFF;
+            }
+
+            &__date {
+                font-family: Inter, sans-serif;
+                text-transform: uppercase;
+                font-size: 17px;
+                font-weight: 500;
+                color: #FFFFFF;
+            }
+
+            &__time {
+                font-family: Inter, sans-serif;
+                text-transform: uppercase;
+                font-size: 17px;
+                font-weight: 500;
+                color: #FFFFFF;
+            }
+        }
+
+        &__track {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            flex-direction: row;
+
+            margin-top: 20px;
+            width: 1300px;
+
+            &__image {
+                width: 80px;
+
+                img {
+                    width: 80px;
+                    border-radius: 15px;
+                }
+            }
+
+            &__info {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+
+                width: 100px;
+
+                &__title {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    text-align: start;
+
+                    font-family: Inter, sans-serif;
+                    font-size: 18px;
+                    font-weight: 600;
+                    color: #FFFFFF;
+
+                    width: inherit;
+                }
+
+                &__artist {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    text-align: start;
+
+                    font-family: Inter, sans-serif;
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: #FFFFFF;
+
+                    width: inherit;
+                }
+            }
+
+            &__date {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+
+                font-family: Inter, sans-serif;
+                font-size: 18px;
+                font-weight: 500;
+                color: #FFFFFF;
+            }
+
+            &__like {
+
+                button {
+                    border: none;
+                    background: inherit;
+                }
+            }
+
+            &__time {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+
+                font-family: Inter, sans-serif;
+                font-size: 18px;
+                font-weight: 500;
+                color: #FFFFFF;
+            }
+        }
+    }
+}
+
+app-footer::ng-deep {
+    .wrapper {
+        margin-top: 0;
     }
 }
