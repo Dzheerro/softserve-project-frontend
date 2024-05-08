@@ -13,8 +13,12 @@ export class ShowTrackService {
 
   constructor(private http: HttpClient) { }
 
-  showTrack(): Observable <any> {
+  showTrack() {
     return this.http.get(this.baseUrl + 'api/v1/tracks');
+  }
+
+  getArtist() {
+    return this.http.get(this.baseUrl + 'api/v1/user/artists');
   }
 
   getTrack(trackId: number) {

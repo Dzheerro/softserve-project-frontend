@@ -13,14 +13,24 @@ import { RouterLink } from '@angular/router';
 export class MediaComponent implements OnInit {
 
   tracks: any;
+  artists: any;
 
   constructor(private showTrackService: ShowTrackService) { }
 
   ngOnInit(): void {
-    this.showTrackService.showTrack().subscribe((result) => {
-      this.tracks = result;
-    });
+    this.getArtists();
+    this.getTracks();
   }
 
-  
+  getTracks() {
+    this.showTrackService.showTrack().subscribe((result) => {
+      this.tracks = result;
+    })
+  };
+
+  getArtists() {
+    this.showTrackService.getArtist().subscribe((result) => {      
+      this.artists = result;
+    })
+  };
 }

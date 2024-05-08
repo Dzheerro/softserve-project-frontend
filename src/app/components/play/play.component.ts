@@ -26,6 +26,7 @@ export class PlayComponent implements OnInit, AfterViewInit {
   trackId!: number;
   trackUrl!: string;
   trackTitle!: string;
+  trackArtist!: string;
 
   isLiked: boolean = false;
   isPlaying: boolean = false;
@@ -71,6 +72,8 @@ export class PlayComponent implements OnInit, AfterViewInit {
   getTrackInfo$(trackId: number) {
     this.trackService.getTrack(trackId).subscribe((result: any) => {
       this.trackTitle = result.data.title;
+      this.trackArtist = result.data.artist.username;
+
     })
   }
 
