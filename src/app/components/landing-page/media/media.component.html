@@ -6,7 +6,7 @@
             <div class="wrapper__charts__container__media" *ngFor="let track of tracks?.data.slice(-5)">
                 <a [routerLink]="['/player', track.id]" class="wrapper__charts__container__media__info">
                     <div class="wrapper__charts__container__media__info__photo">
-                        <img src="/assets/images/no-image.jpeg" alt="no-image"> 
+                        <img src="/assets/images/no-image.jpeg" alt="no-image">
                     </div>
                     <div class="wrapper__charts__container__media__info__title">{{track.title}}</div>
                 </a>
@@ -14,4 +14,30 @@
         </div>
     </div>
     <!-- Tracks Section End -->
+
+    <div class="wrapper__info">
+
+        <!-- Artist Section Start -->
+
+        <div class="wrapper__info__artist">
+            <div class="wrapper__info__artist__title">
+                Top Artist
+            </div>
+            <div class="wrapper__info__artist__block" *ngFor="let artist of artists?.data">
+                <div class="wrapper__info__artist__block__image">
+                    <img src="/assets/images/no-image.jpeg" alt="no-image">
+                </div>
+                <div class="wrapper__info__artist__block__name">
+                    {{artist}}
+                </div>
+            </div>
+        </div>
+
+        <!-- Artist Section End -->
+
+        <div class="wrapper__info__about">
+
+        </div>
+    </div>
+
 </div>

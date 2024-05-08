@@ -2,7 +2,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     margin-top: 40px;
+
+    background-color: #8e8792;
     width: 100%;
 
 
@@ -67,6 +70,7 @@
 
                     &__title {
                         width: 100px;
+                        height: 60px;
 
                         display: flex;
                         justify-content: center;
@@ -80,6 +84,78 @@
 
                         margin-top: 10px;
                     }
+                }
+            }
+        }
+    }
+
+    &__info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+
+        margin-top: 30px;
+        width: 1000px;
+
+        &__artist {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+
+            border-radius: 15px;
+            background-color: #3F3D40;
+            width: 400px;
+
+            &__title {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+
+                width: inherit;
+                height: 50px;
+                color: #FFFFFF;
+
+                font-family: Inter, sans-serif;
+                font-size: 16px;
+                font-weight: 600;
+            }
+
+            &__block {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: row;
+                margin-bottom: 15px;
+
+                &__image {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    width: 100px;
+
+                    img {
+                        width: 80px;
+                        border-radius: 10px;
+                    }
+                }
+
+                &__name {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+
+                    font-family: Inter, sans-serif;
+                    font-weight: 600;
+                    font-size: 16px;
+                    color: #FFFFFF;
+
+                    width: 140px;
                 }
             }
         }
