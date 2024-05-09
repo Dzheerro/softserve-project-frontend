@@ -159,5 +159,123 @@
                 }
             }
         }
+
+        &__about {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+
+            background-color: #3F3D40;
+            border-radius: 15px;
+            margin-left: 20px;
+            height: 240px;
+            width: 600px;
+
+            &__title {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+
+                height: 80px;
+                width: inherit;
+
+
+                font-family: Inter, sans-serif;
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 16px;
+                color: #FFFFFF;
+            }
+
+            &__container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-align: center;
+                flex-direction: row;
+
+                width: inherit;
+                height: inherit;
+
+                &__media {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    flex-direction: column;
+
+                    width: inherit;
+
+                    &__info {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        text-align: center;
+                        flex-direction: column;
+                        text-decoration: none;
+
+
+                        &__photo {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            text-align: center;
+                            margin-bottom: 20px;
+
+                            img {
+                                width: 120px;
+                                height: 120px;
+                                border-radius: 10px;
+                            }
+                        }
+
+                        &__track {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            text-align: center;
+                            flex-direction: column;
+
+                            width: 130px;
+                            margin-bottom: 10px;
+
+                            &__title {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                text-align: center;
+                                text-decoration: none;
+
+                                font-family: Inter, sans-serif;
+                                font-weight: 700;
+                                font-size: 16px;
+                                line-height: 16px;
+
+                                color: #FFFFFF;
+                                margin-bottom: 8px;
+
+                            }
+
+                            &__artist {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                text-align: center;
+
+                                font-family: Inter, sans-serif;
+                                font-weight: 600;
+                                font-size: 16px;
+                                line-height: 14px;
+
+                                color: #FFFFFF;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
