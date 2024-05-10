@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../landing-page/navbar/navbar.component';
 import { FooterComponent } from '../landing-page/footer/footer.component';
-import { ShowTrackService } from '../../services/actions/show-track.service';
+import { ShowTrackService } from '../../services/actions/actions.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

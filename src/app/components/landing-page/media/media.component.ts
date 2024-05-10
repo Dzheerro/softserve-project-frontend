@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ShowTrackService } from '../../../services/actions/show-track.service';
+import { ShowTrackService } from '../../../services/actions/actions.service';
 import { RouterLink } from '@angular/router';
 
 @Component({

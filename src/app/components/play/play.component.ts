@@ -4,7 +4,7 @@ import { NavbarComponent } from '../landing-page/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../landing-page/footer/footer.component';
 import { ActivatedRoute, Params, Route } from '@angular/router';
-import { ShowTrackService } from '../../services/actions/show-track.service';
+import { ShowTrackService } from '../../services/actions/actions.service';
 import { environment } from '../../../environments/environment';
 
 import { TieredMenuModule } from 'primeng/tieredmenu';

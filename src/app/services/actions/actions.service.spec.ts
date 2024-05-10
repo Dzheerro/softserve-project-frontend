@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ShowTrackService } from './show-track.service';
+import { ShowTrackService } from './actions.service';
 
 describe('ShowTrackService', () => {
   let service: ShowTrackService;
