@@ -73,10 +73,12 @@ export class PlayComponent implements OnInit, AfterViewInit {
 
   getAvailablePlaylists$() {
     this.trackService.getPlaylist().subscribe((result: any) => {
-
-      this.playlistId = result.data.id;
-      this.playlistTitle = result.data.title;
-
+  
+      const playlistsWithTitles = result.data.map((playlist: any) => ({
+        id: playlist.id,
+        title: playlist.title
+      }));
+  
       this.items = [
         {
           label: 'Add Like',
@@ -86,17 +88,15 @@ export class PlayComponent implements OnInit, AfterViewInit {
         {
           label: 'Add to Playlist',
           icon: 'pi pi-list',
-          items: [
-            {
-              label: result.data.title,
-              command: () => this.putTrackIntoPlaylist$(this.playlistId, this.trackId)
-            }
-          ]
+          items: playlistsWithTitles.map((playlist: any) => ({
+            label: playlist.title,
+            command: () => this.putTrackIntoPlaylist$(playlist.id, this.trackId)
+          }))
         }
-      ]
-    })
+      ];
+    });
   };
-
+  
   addLike$(trackId: number) {
     this.trackService.addLike(trackId).subscribe((result) => {
       console.log(result);
