@@ -67,7 +67,7 @@
                     stroke="black" stroke-width="4" />
             </svg>
         </button>
-        <button class="wrapper__buttons__like">
+        <button class="wrapper__buttons__like" (click)="isLiked ? removeLike$(trackId) : addLike$(trackId)">
             <svg width="43" height="40" viewBox="0 0 43 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M26.6359 20.1217C26.6359 26.2778 16.6285 22.2931 10.7123 22.2931C4.79605 22.2931 0 17.3026 0 11.1466C0 4.99049 4.79605 0 10.7123 0C16.6285 0 30.834 11.1466 26.6359 20.1217Z"
