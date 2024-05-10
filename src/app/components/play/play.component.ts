@@ -1,16 +1,20 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+
 import { NavbarComponent } from '../landing-page/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../landing-page/footer/footer.component';
 import { ActivatedRoute, Params, Route } from '@angular/router';
 import { ShowTrackService } from '../../services/actions/show-track.service';
 import { environment } from '../../../environments/environment';
-import { switchMap } from 'rxjs';
+
+import { TieredMenuModule } from 'primeng/tieredmenu';
+import { ButtonModule } from 'primeng/button';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-play',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, FooterComponent],
+  imports: [CommonModule, NavbarComponent, FooterComponent, TieredMenuModule, ButtonModule],
   templateUrl: './play.component.html',
   styleUrl: './play.component.scss'
 })
@@ -27,12 +31,17 @@ export class PlayComponent implements OnInit, AfterViewInit {
   trackUrl!: string;
   trackTitle!: string;
   trackArtist!: string;
+  
+  playlistId!: number;
+  playlistTitle!: string;
 
   isLiked: boolean = false;
   isPlaying: boolean = false;
 
   trackDuration: any;
   currentTime: any;
+
+  items: MenuItem[] | undefined;
 
   constructor (private trackService: ShowTrackService, private route: ActivatedRoute) { }
 
@@ -45,6 +54,7 @@ export class PlayComponent implements OnInit, AfterViewInit {
     if (this.trackId) {
       this.getTrackInfo$(this.trackId);
       this.getTrackFile$(this.trackId);
+      this.getAvailablePlaylists$();
 
       this.trackDuration = '0:00';
       this.currentTime = '0:00';
@@ -56,6 +66,36 @@ export class PlayComponent implements OnInit, AfterViewInit {
     this.loadTrack();
     this.updateTrackInfo();
   }
+
+  putTrackIntoPlaylist$(playlistId: number, trackId: number) {
+    this.trackService.putTrackIntoPlaylist(playlistId, trackId).subscribe();
+  }
+
+  getAvailablePlaylists$() {
+    this.trackService.getPlaylist().subscribe((result: any) => {
+
+      this.playlistId = result.data.id;
+      this.playlistTitle = result.data.title;
+
+      this.items = [
+        {
+          label: 'Add Like',
+          icon: 'pi pi-thumbs-up',
+          command: () => this.addLike$(this.trackId)
+        },
+        {
+          label: 'Add to Playlist',
+          icon: 'pi pi-list',
+          items: [
+            {
+              label: result.data.title,
+              command: () => this.putTrackIntoPlaylist$(this.playlistId, this.trackId)
+            }
+          ]
+        }
+      ]
+    })
+  };
 
   addLike$(trackId: number) {
     this.trackService.addLike(trackId).subscribe((result) => {

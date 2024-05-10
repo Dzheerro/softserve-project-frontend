@@ -8,8 +8,14 @@
             <img src="/assets/images/no-image.jpeg">
         </div>
         <div class="wrapper__container__content">
-            <div class="wrapper__container__content__title">
-                {{trackTitle}}
+            <div class="wrapper__container__content__action">
+                <div class="wrapper__container__content__action__title">
+                    {{trackTitle}}
+                </div>
+                <div class="wrapper__container__content__action__dots">
+                    <p-button label="..." (click)="menu.toggle($event)" />
+                    <p-tieredMenu #menu [model]="items" [popup]="true" />
+                </div>
             </div>
             <div class="wrapper__container__content__artist">
                 {{trackArtist}}
