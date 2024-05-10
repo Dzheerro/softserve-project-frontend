@@ -1,27 +1,24 @@
 <div class="wrapper">
-    <header>
-        <div class="logo">
-            <a routerLink="/dashboard"><img src="/assets/images/Group.png"></a>
+    <header class="wrapper__header">
+        <a routerLink="/dashboard" class="wrapper__header__logo">
+            <img src="/assets/images/Group.png" alt="logo-image">
+        </a>
+        <div class="wrapper__header__search">
+            <input type="text" placeholder="ex. Василина...">
         </div>
-        <div class="search_box">
-            <input type="search" placeholder="Search...">
+        <div class="wrapper__header__links">
+            <a routerLink="/dashboard" *ngIf="username"> {{ username }} </a>
+
+            <a routerLink="/login" *ngIf="!isLoggedIn()">Sign In</a>
+            <a routerLink="/signup" *ngIf="!isLoggedIn()">Create Account</a>
+
+            <a *ngIf="isArtist()" routerLink="/artist/create-track">Create Track</a>
+
+            <div class="wrapper__header__links__menu">
+                <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" styleClass="mr-2"
+                    size="xlarge" shape="circle" (click)="menu.toggle($event)" />
+                <p-tieredMenu #menu [model]="items" [popup]="true" />
+            </div>
         </div>
-        <nav>
-            <ul>
-                <li><a *ngIf="username">{{username}}</a></li>
-                <li><a *ngIf="!isLoggedIn()" routerLink="/login">Sign In</a></li>
-                <li><a *ngIf="isLoggedIn() && isArtist()" routerLink="/artist/create-track">Create Track</a></li>
-                <li><a *ngIf="!isLoggedIn()" routerLink="/register">Create Account</a></li>
-                <li><a>Menu</a>
-                    <ul class="submenu">
-                        <li><a routerLink="/likes">Liked Tracks</a></li>
-                        <li><a routerLink="/playlists">Playlists</a></li>
-                        <li><a *ngIf="isArtist()" routerLink="/artist/albums">Albums</a></li>
-                        <li><a>Settings</a></li>
-                        <li><a (click)="logOut()">Log Out</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
     </header>
 </div>

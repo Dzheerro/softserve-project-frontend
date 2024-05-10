@@ -19,7 +19,7 @@ export const routes: Routes = [
     { path: 'artist/create-track', component: CreateTrackComponent},
     { path: 'create-playlist', component: CreatePlaylistComponent},
 
-    { path: 'register', component: RegisterComponent },
+    { path: 'signup', component: RegisterComponent },
     { path: 'login', component: LoginComponent },
     
     { path: 'playlists', component: PlaylistsComponent},
