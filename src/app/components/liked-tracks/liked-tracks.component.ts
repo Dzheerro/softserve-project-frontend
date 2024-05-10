@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../landing-page/navbar/navbar.component';
 import { FooterComponent } from '../landing-page/footer/footer.component';
-import { ShowTrackService } from '../../services/actions/show-track.service';
+import { ActionsTrackService } from '../../services/actions/actions.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -19,7 +19,7 @@ export class LikedTracksComponent implements OnInit{
 
   tracks!: any
 
-  constructor (private trackService: ShowTrackService) {}
+  constructor (private trackService: ActionsTrackService) {}
 
   ngOnInit(): void {
     this.getLikedTracks$()

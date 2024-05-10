@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ShowTrackService } from '../../../services/actions/show-track.service';
+import { ActionsTrackService } from '../../../services/actions/actions.service';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -15,7 +15,7 @@ export class MediaComponent implements OnInit {
   tracks: any;
   artists: any;
 
-  constructor(private showTrackService: ShowTrackService) { }
+  constructor(private showTrackService: ActionsTrackService) { }
 
   ngOnInit(): void {
     this.getArtists();

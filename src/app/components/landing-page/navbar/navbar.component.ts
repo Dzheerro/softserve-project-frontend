@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
 
   baseUrl: string = environment.baseUrl;
 
-  constructor(private userDataJwtService: UserDataJwtService, private http: HttpClient, private authService: AuthService, private router: Router) {
+  constructor(private userDataJwtService: UserDataJwtService, private authService: AuthService, private router: Router) {
     this.username = this.userDataJwtService.getUsername();
     this.profileType = this.userDataJwtService.getUserProfileType();
   }

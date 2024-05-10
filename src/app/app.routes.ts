@@ -10,6 +10,7 @@ import { CreatePlaylistComponent } from './components/create-playlist/create-pla
 import { PlayComponent } from './components/play/play.component';
 import { CreateAlbumComponent } from './components/album/create-album/create-album.component';
 import { AlbumComponent } from './components/album/album/album.component';
+import { ArtistHomePageComponent } from './components/artist/artist-home-page/artist-home-page.component';
 
 
 export const routes: Routes = [
@@ -28,6 +29,7 @@ export const routes: Routes = [
 
     { path: 'artist/create-album', component: CreateAlbumComponent},
     { path: 'artist/albums', component: AlbumComponent},
+    { path: 'artist/:nickname', component: ArtistHomePageComponent},
 
     { path: '**', redirectTo: '/dashboard'}
     
