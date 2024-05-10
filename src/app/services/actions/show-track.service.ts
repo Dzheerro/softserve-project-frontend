@@ -35,7 +35,7 @@ export class ShowTrackService {
   }
 
   removeLike(trackId: number) {
-    const requestData = { trackId: trackId };
+    const requestData = { track_id: trackId };
     return this.http.put(this.baseUrl + 'api/v1/like_tracks/', requestData);
   }
     
