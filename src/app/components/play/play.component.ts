@@ -4,7 +4,7 @@ import { NavbarComponent } from '../landing-page/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../landing-page/footer/footer.component';
 import { ActivatedRoute, Params, Route } from '@angular/router';
-import { ShowTrackService } from '../../services/actions/actions.service';
+import { ActionsTrackService } from '../../services/actions/actions.service';
 import { environment } from '../../../environments/environment';
 
 import { TieredMenuModule } from 'primeng/tieredmenu';
@@ -43,7 +43,7 @@ export class PlayComponent implements OnInit, AfterViewInit {
 
   items: MenuItem[] | undefined;
 
-  constructor (private trackService: ShowTrackService, private route: ActivatedRoute) { }
+  constructor (private trackService: ActionsTrackService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {

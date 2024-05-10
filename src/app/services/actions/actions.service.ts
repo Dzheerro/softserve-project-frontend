@@ -1,13 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { Observable } from 'rxjs';
-
 
 @Injectable({
   providedIn: 'root'
 })
-export class ShowTrackService {
+
+export class ActionsTrackService {
 
   baseUrl: string = environment.baseUrl;
 
@@ -51,4 +50,6 @@ export class ShowTrackService {
     const requestData = { playlist_id: playlistId, track_ids: [trackId] };
     return this.http.put(this.baseUrl + 'api/v1/playlists/', requestData);
   }
+
+  
 }
