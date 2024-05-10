@@ -74,6 +74,9 @@ export class PlayComponent implements OnInit, AfterViewInit {
       this.trackTitle = result.data.title;
       this.trackArtist = result.data.artist.username;
 
+      if (result.test === true) {
+        this.isLiked = true;
+      }
     })
   }
 
