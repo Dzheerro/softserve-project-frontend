@@ -42,4 +42,13 @@ export class ShowTrackService {
   getLikedTracks() {
     return this.http.get(this.baseUrl + 'api/v1/like_tracks/');
   }
+
+  getPlaylist() {
+    return this.http.get(this.baseUrl + 'api/v1/playlists/');
+  }
+
+  putTrackIntoPlaylist(playlistId: number, trackId: number) {
+    const requestData = { playlist_id: playlistId, track_ids: [trackId] };
+    return this.http.put(this.baseUrl + 'api/v1/playlists/', requestData);
+  }
 }
