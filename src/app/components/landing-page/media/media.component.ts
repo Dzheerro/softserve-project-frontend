@@ -29,8 +29,8 @@ export class MediaComponent implements OnInit {
   };
 
   getArtists() {
-    this.showTrackService.getArtist().subscribe((result) => {      
-      this.artists = result;
+    this.showTrackService.getArtist().subscribe((result: any) => {      
+      this.artists = result.data;
     })
   };
 }
