@@ -8,9 +8,10 @@ import { PlaylistsComponent } from './components/playlists/playlists.component';
 import { LikedTracksComponent } from './components/liked-tracks/liked-tracks.component';
 import { CreatePlaylistComponent } from './components/create-playlist/create-playlist.component';
 import { PlayComponent } from './components/play/play.component';
-import { CreateAlbumComponent } from './components/album/create-album/create-album.component';
-import { AlbumComponent } from './components/album/album/album.component';
+import { CreateAlbumComponent } from './components/artist/create-album/create-album.component';
+import { AlbumComponent } from './components/artist/album/album.component';
 import { ArtistHomePageComponent } from './components/artist/artist-home-page/artist-home-page.component';
+import { UserHomePageComponent } from './components/user/user-home-page/user-home-page.component';
 
 
 export const routes: Routes = [
@@ -30,6 +31,8 @@ export const routes: Routes = [
     { path: 'artist/create-album', component: CreateAlbumComponent},
     { path: 'artist/albums', component: AlbumComponent},
     { path: 'artist/:nickname', component: ArtistHomePageComponent},
+
+    {path: 'user/:nickname', component: UserHomePageComponent},
 
     { path: '**', redirectTo: '/dashboard'}
     
