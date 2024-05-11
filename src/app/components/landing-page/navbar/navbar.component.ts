@@ -67,6 +67,10 @@ export class NavbarComponent implements OnInit {
     return this.profileType === 'Artist';
   }
 
+  isListener(): boolean {
+    return this.profileType === 'Listener'
+  }
+
   isLoggedIn(): boolean {
     return this.authService.isLoggedIn$();
   }
