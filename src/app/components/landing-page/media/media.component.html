@@ -23,7 +23,7 @@
             <div class="wrapper__info__artist__title">
                 Top Artist
             </div>
-            <a [routerLink]="['/artist', artist]" class="wrapper__info__artist__block" *ngFor="let artist of artists?.user">
+            <a [routerLink]="['/artist', artist.username]" class="wrapper__info__artist__block" *ngFor="let artist of artists?.user">
                 <div class="wrapper__info__artist__block__image">
                     <img src="/assets/images/no-image.jpeg" alt="no-image">
                 </div>
