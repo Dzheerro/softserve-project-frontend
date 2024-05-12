@@ -30,9 +30,8 @@ export const routes: Routes = [
 
     { path: 'artist/create-album', component: CreateAlbumComponent},
     { path: 'artist/albums', component: AlbumComponent},
-    { path: 'artist/:nickname', component: ArtistHomePageComponent},
-
-    {path: 'user/:nickname', component: UserHomePageComponent},
+    { path: 'artist/:id', component: ArtistHomePageComponent},
+    { path: 'user/:id', component: UserHomePageComponent},
 
     { path: '**', redirectTo: '/dashboard'}
     
