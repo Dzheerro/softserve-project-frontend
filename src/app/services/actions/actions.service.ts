@@ -51,5 +51,12 @@ export class ActionsTrackService {
     return this.http.put(this.baseUrl + 'api/v1/playlists/', requestData);
   }
 
+  getInfoForSomeArtist(id: number) {
+    return this.http.get(`${this.baseUrl}api/v1/user/artists/${id}/`);
+  }
+  
+  getTrackInfoForSomeArtist(id: number) {
+    return this.http.get(`${this.baseUrl}api/v1/page_artist/${id}/`);
+  }
   
 }
