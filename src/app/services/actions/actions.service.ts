@@ -59,4 +59,11 @@ export class ActionsTrackService {
     return this.http.get(`${this.baseUrl}api/v1/page_artist/${id}/`);
   }
   
+  getArtistTracksInfo() {
+    return this.http.get(`${this.baseUrl}api/v1/track_by_artist`);
+  }
+
+  getAlbumInfoAboutArtist() {
+    return this.http.get(`${this.baseUrl}api/v1/album_by_artist`);
+  }
 }
