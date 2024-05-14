@@ -12,6 +12,7 @@ import { CreateAlbumComponent } from './components/artist/create-album/create-al
 import { AlbumComponent } from './components/artist/album/album.component';
 import { ArtistHomePageComponent } from './components/artist/artist-home-page/artist-home-page.component';
 import { UserHomePageComponent } from './components/user/user-home-page/user-home-page.component';
+import { PlaylistInfoComponent } from './components/playlist-info/playlist-info.component';
 
 
 export const routes: Routes = [
@@ -25,6 +26,7 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     
     { path: 'playlists', component: PlaylistsComponent},
+    { path: 'playlist/:id', component: PlaylistInfoComponent},
     { path: 'likes', component: LikedTracksComponent},
     { path: 'player/:id', component: PlayComponent},
 
