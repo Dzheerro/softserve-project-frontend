@@ -1,1 +1,28 @@
-<p>album works!</p>
+<app-navbar></app-navbar>
+
+<!-- Start Playlist Section -->
+
+<div class="wrapper">
+    <div class="wrapper__header">
+        <div class="wrapper__header__title">
+            Albums
+        </div>
+        <div class="wrapper__header__button">
+            <button routerLink="/artist/create-album">Create Album</button>
+        </div>
+    </div>
+    <div class="wrapper__playlist" >
+        <a [routerLink]="['/artist/album/', album.id]" class="wrapper__playlist__block" *ngFor="let album of albums">
+            <div class="wrapper__playlist__block__image">
+                <img src="/assets/images/no-image.jpeg" alt="no-image">
+            </div>
+            <div class="wrapper__playlist__block__title">
+                {{album.name}}
+            </div>
+        </a>
+    </div>
+</div>
+
+<!-- End Playlist Section -->
+
+<app-footer></app-footer>

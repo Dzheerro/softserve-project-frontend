@@ -5,11 +5,12 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { environment } from '../../../environments/environment';
 import { NavbarComponent } from '../landing-page/navbar/navbar.component';
 import { Router } from '@angular/router';
+import { FooterComponent } from '../landing-page/footer/footer.component';
 
 @Component({
   selector: 'app-create-playlist',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, ReactiveFormsModule],
+  imports: [CommonModule, NavbarComponent, ReactiveFormsModule, FooterComponent],
   templateUrl: './create-playlist.component.html',
   styleUrl: './create-playlist.component.scss'
 })

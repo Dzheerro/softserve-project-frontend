@@ -70,4 +70,20 @@ export class ActionsTrackService {
   getPlaylistInfo(id: number) {
     return this.http.get(`${this.baseUrl}api/v1/playlists/${id}`);
   }
+
+  createAlbum(albumData: { name: any, description: any }) {
+    return this.http.post(`${this.baseUrl}api/v1/album/`, albumData);
+  }
+
+  getAlbums() {
+    return this.http.get(`${this.baseUrl}api/v1/album`);
+  }
+
+  getCertainAlbum(id: number) {
+    return this.http.get(`${this.baseUrl}api/v1/album/${id}`);
+  }
+
+  putTrackIntoAlbum() {
+    
+  }
 }

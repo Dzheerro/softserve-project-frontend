@@ -155,11 +155,18 @@
             background-color: #574C61;
 
             color: #FFFFFF;
+            margin-bottom: 50px;
 
             font-family: Inter, sans-serif;
             text-transform: uppercase;
             font-size: 25px;
             font-weight: 500;
         }
+    }
+}
+
+app-footer::ng-deep {
+    .wrapper {
+        margin-top: 0px;
     }
 }
