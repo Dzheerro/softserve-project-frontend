@@ -66,4 +66,8 @@ export class ActionsTrackService {
   getAlbumInfoAboutArtist() {
     return this.http.get(`${this.baseUrl}api/v1/album_by_artist`);
   }
+
+  getPlaylistInfo(id: number) {
+    return this.http.get(`${this.baseUrl}api/v1/playlists/${id}`);
+  }
 }

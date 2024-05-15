@@ -1,1 +1,66 @@
-<p>playlist-info works!</p>
+<app-navbar></app-navbar>
+
+<!-- Start Liked Tracks Section -->
+
+<div class="wrapper">
+
+    <!-- Start Image Section -->
+
+    <div class="wrapper__container">
+        <div class="wrapper__container__image">
+            <img src="/assets/images/no-image.jpeg" alt="no-image">
+        </div>
+        <div class="wrapper__container__title">
+           {{playlistTitle}}
+        </div>
+    </div>
+
+    <!-- End Image Section -->
+
+    <div class="wrapper__content">
+        <div class="wrapper__content__header">
+            <div class="wrapper__content__header__title">Title</div>
+            <div class="wrapper__content__header__date">Date Added</div>
+            <div class="wrapper__content__header__time">Time</div>
+        </div>
+        <a class="wrapper__content__track" *ngFor="let playlist of playlistInfo" [routerLink]="['/player/', playlist.id]">
+            <div class="wrapper__content__track__image">
+                <img src="/assets/images/no-image.jpeg" alt="no-image">
+            </div>
+            <div class="wrapper__content__track__info">
+                <div class="wrapper__content__track__info__title">
+                   {{playlist.title}}
+                </div>
+                <div class="wrapper__content__track__info__artist">
+                    Yeat
+                </div>
+            </div>
+            <div class="wrapper__content__track__date">
+                {{formatDate(playlist.create_at)}}
+            </div>
+            <div class="wrapper__content__track__like">
+                <button>
+                    <svg width="43" height="40" viewBox="0 0 43 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M26.6359 20.1217C26.6359 26.2778 16.6285 22.2931 10.7123 22.2931C4.79605 22.2931 0 17.3026 0 11.1466C0 4.99049 4.79605 0 10.7123 0C16.6285 0 30.834 11.1466 26.6359 20.1217Z"
+                            fill="#EF0000" />
+                        <path
+                            d="M42.8518 11.1466C42.8518 17.3026 38.0558 22.2931 32.1395 22.2931C26.2233 22.2931 19.5454 22.6588 19.5454 16.5027C13.0308 9.11991 26.2233 0 32.1395 0C38.0558 0 43.7204 4.63234 42.8518 11.1466Z"
+                            fill="#EF0000" />
+                        <path
+                            d="M41.9801 14.1938C41.9801 23.0682 24.7536 36.7754 21.5689 39.3792C15.1994 34.4592 0.289062 21.7591 0.289062 12.8848C0.289062 3.32665 15.5727 10.7192 21.5689 10.7192C27.565 10.7192 41.9801 5.3195 41.9801 14.1938Z"
+                            fill="#EF0000" />
+                    </svg>
+                </button>
+            </div>
+            <div class="wrapper__content__track__time">
+                2:31
+            </div>
+        </a>
+    </div>
+</div>
+
+<!-- End Liked Tracks Section -->
+
+<app-footer></app-footer>
+
