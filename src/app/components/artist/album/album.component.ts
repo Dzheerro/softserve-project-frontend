@@ -23,7 +23,7 @@ export class AlbumComponent implements OnInit{
   }
 
   getAlbums() {
-    this.actionService$.getAlbums().subscribe( (result: any) => {
+    this.actionService$.getAlbumInfoAboutArtist().subscribe( (result: any) => {      
       this.albums = result.data;
     })
   }
