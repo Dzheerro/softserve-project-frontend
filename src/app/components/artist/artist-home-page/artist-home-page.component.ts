@@ -15,6 +15,7 @@ import { ActivatedRoute, Params, RouterLink } from '@angular/router';
 export class ArtistHomePageComponent implements OnInit{
 
   artistId!: number;
+  artistPlaysCount!: number
   artistUsername!: string;
   artistTracks: any;
   artistAlbums: any;
@@ -33,12 +34,13 @@ export class ArtistHomePageComponent implements OnInit{
   getInfoForSomeArtist$(id: number) {
     this.actionService$.getInfoForSomeArtist(id).subscribe((result: any) => {
       this.artistUsername = result.data.user.username
+      this.artistPlaysCount = result.data.total_listens;
     });
   }
   
   getInfoAboutArtist$(artistId: number) {
     this.actionService$.getTrackInfoForSomeArtist(artistId).subscribe( (response:any) => {
-      console.log(response.data);
+      
       
       this.artistAlbums = response.data.albums;
       this.artistTracks = response.data.tracks;
