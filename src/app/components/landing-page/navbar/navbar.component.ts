@@ -14,22 +14,37 @@ import { BadgeModule } from 'primeng/badge';
 import { ButtonModule } from 'primeng/button';
 import { MenuItem } from 'primeng/api';
 
+import { FormsModule } from '@angular/forms';
+import { AutoCompleteCompleteEvent, AutoCompleteModule } from 'primeng/autocomplete';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { ActionsTrackService } from '../../../services/actions/actions.service';
+
+
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, CommonModule, TieredMenuModule, ButtonModule, AvatarModule, BadgeModule],
+  imports: [RouterLink, CommonModule, FormsModule, TieredMenuModule, ButtonModule, AvatarModule, BadgeModule, AutoCompleteModule, FloatLabelModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit {
   username: string | null;
   profileType: string | null;
+
+  searchQuery: string = '';
+  searchResults!: any[];
+  selectedItem: any;
+
+  searchTrack: any;
+  searchArtist: any;
+  searchAlbum: any;
+
   items: MenuItem[] | undefined;
 
   baseUrl: string = environment.baseUrl;
 
-  constructor(private userDataJwtService: UserDataJwtService, private authService: AuthService, private router: Router) {
+  constructor(private userDataJwtService: UserDataJwtService, private authService: AuthService, private router: Router, private actionService$: ActionsTrackService) {
     this.username = this.userDataJwtService.getUsername();
     this.profileType = this.userDataJwtService.getUserProfileType();
   }
@@ -60,8 +75,43 @@ export class NavbarComponent implements OnInit {
         icon: 'pi pi-sign-out',
         command: () => this.logOut()
       },
-    ]
+    ];
   }
+
+  search(event: any) {
+    const query = event.query;
+    
+    // Вызываем все методы поиска по трекам, альбомам и артистам
+    this.searchByTracks$(query);
+    this.searchByAlbums$(query);
+    this.searchByArtist$(query);
+    
+    // Объединяем результаты всех запросов в один массив
+    this.searchResults = [
+      ...(this.searchTrack ? this.searchTrack.map((track: any) => track.title) : []),
+      ...(this.searchAlbum ? this.searchAlbum.map((album: any) => album.name) : []),
+      ...(this.searchArtist ? this.searchArtist.map((artist: any) => artist.username) : [])
+    ];
+  }
+
+  searchByTracks$(track_name: string) {
+    this.actionService$.searchByTracks(track_name).subscribe( (result: any) => {
+      this.searchTrack = result.data;
+    })
+  }
+
+  searchByAlbums$(album_name: string) {
+    this.actionService$.searchByAlbums(album_name).subscribe( (result: any) => {
+      this.searchAlbum = result.data;
+    })
+  }
+
+  searchByArtist$(artist_name: string) {
+    this.actionService$.searchByArtist(artist_name).subscribe( (result: any) => {
+      this.searchArtist = result.data;
+    })
+  }
+
 
   isArtist(): boolean {
     return this.profileType === 'Artist';

@@ -35,6 +35,9 @@ export class PlayComponent implements OnInit, AfterViewInit {
   playlistId!: number;
   playlistTitle!: string;
 
+  albums: any;
+  albumId!: number
+
   isLiked: boolean = false;
   isPlaying: boolean = false;
 
@@ -55,6 +58,7 @@ export class PlayComponent implements OnInit, AfterViewInit {
       this.getTrackInfo$(this.trackId);
       this.getTrackFile$(this.trackId);
       this.getAvailablePlaylists$();
+      this.getAvailableAlbums$();
 
       this.trackDuration = '0:00';
       this.currentTime = '0:00';
@@ -69,6 +73,16 @@ export class PlayComponent implements OnInit, AfterViewInit {
 
   putTrackIntoPlaylist$(playlistId: number, trackId: number) {
     this.trackService.putTrackIntoPlaylist(playlistId, trackId).subscribe();
+  }
+
+  putTrackIntoAlbum$(albumId: number, trackId: number) {
+    this.trackService.putTrackIntoAlbum(albumId, trackId).subscribe();
+  } 
+
+  getAvailableAlbums$() {
+    this.trackService.getAlbumInfoAboutArtist().subscribe( (result: any) => {
+      this.albums = result.data;
+    })
   }
 
   getAvailablePlaylists$() {
@@ -92,7 +106,7 @@ export class PlayComponent implements OnInit, AfterViewInit {
             label: playlist.title,
             command: () => this.putTrackIntoPlaylist$(playlist.id, this.trackId)
           }))
-        }
+        }   
       ];
     });
   };

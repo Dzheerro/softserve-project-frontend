@@ -26,6 +26,7 @@ export class ArtistHomePageComponent implements OnInit{
       const artistId = +params['id'];
       this.getInfoForSomeArtist$(artistId);
       this.getTrackInfoForSomeArtist$(artistId);
+      this.getAlbumInfoAboutArtist$();
     });
   }
   
@@ -39,6 +40,12 @@ export class ArtistHomePageComponent implements OnInit{
     this.actionService$.getTrackInfoForSomeArtist(id).subscribe((result: any) => {
         this.artistTracks = result.data.tracks
     });
-  }  
+  }
+  
+  getAlbumInfoAboutArtist$() {
+    this.actionService$.getAlbumInfoAboutArtist().subscribe( (result: any) => {
+      this.artistAlbums = result.data;
+    })
+  }
 
 }

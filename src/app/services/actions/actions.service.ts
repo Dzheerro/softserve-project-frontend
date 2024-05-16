@@ -83,7 +83,21 @@ export class ActionsTrackService {
     return this.http.get(`${this.baseUrl}api/v1/album/${id}`);
   }
 
-  putTrackIntoAlbum() {
-    
+  putTrackIntoAlbum(id: number, track_id: number) {
+    const requestData = {track_id: track_id}
+    return this.http.put(`${this.baseUrl}api/v1/album/${id}/`, requestData)
   }
+
+  searchByTracks(track_name: string) {
+    return this.http.get(`${this.baseUrl}api/v1/tracks/?track_name=${track_name}`)
+  }
+
+  searchByArtist(artist_name: string) {
+    return this.http.get(`${this.baseUrl}api/v1/user/artists/?artist_name=${artist_name}`);
+  }
+
+  searchByAlbums(album_name: string) {
+    return this.http.get(`${this.baseUrl}api/v1/album/?album_name=${album_name}`)
+  }
+
 }
