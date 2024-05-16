@@ -47,12 +47,18 @@
                 justify-content: center;
                 align-items: center;
                 text-align: center;
-    
-                font-family: Inter, sans-serif;
-                font-weight: 700;
-                font-size: 36px;
-                line-height: 30px;
-    
+                flex-direction: column;
+
+                &__title {
+                    font-family: Inter, sans-serif;
+                    font-weight: 700;
+                    font-size: 36px;
+                    line-height: 30px;
+                }
+                 
+                &__count {
+                    margin-top: 20px;
+                }
                 width: 250px;
             }
         }
