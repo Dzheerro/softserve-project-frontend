@@ -4,8 +4,12 @@
             <img src="/assets/images/Group.png" alt="logo-image">
         </a>
         <div class="wrapper__header__search">
-            <input type="text" placeholder="Search">
-        </div>
+            <p-autoComplete 
+              [(ngModel)]="selectedItem" 
+              [suggestions]="searchResults" 
+              (completeMethod)="search($event)">
+            </p-autoComplete>
+          </div>
         <div class="wrapper__header__links">
             <a *ngIf="isArtist() && isLoggedIn()" [routerLink]="['/artist', username]">View Profile</a>
             <a *ngIf="!isArtist() && isLoggedIn()" [routerLink]="'/user/' + username">View Profile</a>
