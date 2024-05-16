@@ -62,6 +62,7 @@ export class LoginComponent {
                 this.decodedToken = this.helper.decodeToken(this.responseData.tokens.access);
                 this.userDataJwtService.setProfileType(this.decodedToken.profile_type);
                 this.userDataJwtService.setUsername(this.decodedToken.username);
+                this.userDataJwtService.setUserId(this.decodedToken.user_id);
 
                 this.isLoginFailed = false;
                 this.isLoggedIn = true;
