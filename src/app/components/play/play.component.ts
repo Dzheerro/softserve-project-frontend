@@ -130,15 +130,13 @@ export class PlayComponent implements OnInit, AfterViewInit {
   
   addLike$(trackId: number) {
     this.trackService.addLike(trackId).subscribe((result) => {
-      console.log(result);
-      this.getTrackInfo$(trackId);
+      this.isLiked = true;
     });
   } 
   
   removeLike$(trackId: number) {
     this.trackService.removeLike(trackId).subscribe((result) => {
-      console.log(result);
-      this.getTrackInfo$(trackId);
+      this.isLiked = false;
     });
   }
 
@@ -149,7 +147,7 @@ export class PlayComponent implements OnInit, AfterViewInit {
       
       if (result.liked === true) {
         this.isLiked = true;
-      }
+      } else this.isLiked = false;
     })
   }
 

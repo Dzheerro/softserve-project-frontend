@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 
 import { UserDataJwtService } from '../../../services/auth/user-data-jwt.service';
 import { AuthService } from '../../../services/auth/auth.service';
@@ -15,7 +14,7 @@ import { ButtonModule } from 'primeng/button';
 import { MenuItem } from 'primeng/api';
 
 import { FormsModule } from '@angular/forms';
-import { AutoCompleteCompleteEvent, AutoCompleteModule } from 'primeng/autocomplete';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { ActionsTrackService } from '../../../services/actions/actions.service';
 
@@ -31,6 +30,7 @@ import { ActionsTrackService } from '../../../services/actions/actions.service';
 export class NavbarComponent implements OnInit {
   username: string | null;
   profileType: string | null;
+  userId: any;
 
   searchQuery: string = '';
   searchResults!: any[];
@@ -47,6 +47,7 @@ export class NavbarComponent implements OnInit {
   constructor(private userDataJwtService: UserDataJwtService, private authService: AuthService, private router: Router, private actionService$: ActionsTrackService) {
     this.username = this.userDataJwtService.getUsername();
     this.profileType = this.userDataJwtService.getUserProfileType();
+    this.userId = this.userDataJwtService.getUserId();
   }
 
   ngOnInit() {
@@ -81,12 +82,10 @@ export class NavbarComponent implements OnInit {
   search(event: any) {
     const query = event.query;
     
-    // Вызываем все методы поиска по трекам, альбомам и артистам
     this.searchByTracks$(query);
     this.searchByAlbums$(query);
     this.searchByArtist$(query);
     
-    // Объединяем результаты всех запросов в один массив
     this.searchResults = [
       ...(this.searchTrack ? this.searchTrack.map((track: any) => track.title) : []),
       ...(this.searchAlbum ? this.searchAlbum.map((album: any) => album.name) : []),

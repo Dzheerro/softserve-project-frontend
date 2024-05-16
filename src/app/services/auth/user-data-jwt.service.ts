@@ -18,6 +18,14 @@ export class UserDataJwtService {
     return localStorage.setItem('username', username);
   } 
 
+  setUserId(id: number) {
+    return localStorage.setItem('id', id.toString());
+  } 
+
+  getUserId() {
+    return localStorage.getItem('id');
+  }
+
   getUserProfileType() {
     return localStorage.getItem('profile_type');
   }
