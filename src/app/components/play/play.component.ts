@@ -3,13 +3,14 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { NavbarComponent } from '../landing-page/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../landing-page/footer/footer.component';
-import { ActivatedRoute, Params, Route } from '@angular/router';
+import { ActivatedRoute, Params, Route, Router } from '@angular/router';
 import { ActionsTrackService } from '../../services/actions/actions.service';
 import { environment } from '../../../environments/environment';
 
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { ButtonModule } from 'primeng/button';
 import { MenuItem } from 'primeng/api';
+import { map, take } from 'rxjs';
 
 @Component({
   selector: 'app-play',
@@ -46,7 +47,7 @@ export class PlayComponent implements OnInit, AfterViewInit {
 
   items: MenuItem[] | undefined;
 
-  constructor (private trackService: ActionsTrackService, private route: ActivatedRoute) { }
+  constructor (private trackService: ActionsTrackService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -70,6 +71,21 @@ export class PlayComponent implements OnInit, AfterViewInit {
     this.loadTrack();
     this.updateTrackInfo();
   }
+
+  switchTrack(forward: boolean) {
+    if (forward) {
+        this.trackId++;
+        this.trackUrl = '';
+    } else {
+        this.trackId--;
+        this.trackUrl = '';
+    }
+
+    this.router.navigate(['/player', this.trackId]);
+    this.trackUrl = `${this.baseUrl}api/v1/tracks/?track_id_file=${this.trackId}`;
+    this.getTrackInfo$(this.trackId);
+    this.loadTrack();
+}
 
   putTrackIntoPlaylist$(playlistId: number, trackId: number) {
     this.trackService.putTrackIntoPlaylist(playlistId, trackId).subscribe();
@@ -114,13 +130,15 @@ export class PlayComponent implements OnInit, AfterViewInit {
   addLike$(trackId: number) {
     this.trackService.addLike(trackId).subscribe((result) => {
       console.log(result);
-    })
+      this.getTrackInfo$(trackId);
+    });
   } 
-
+  
   removeLike$(trackId: number) {
     this.trackService.removeLike(trackId).subscribe((result) => {
       console.log(result);
-    })
+      this.getTrackInfo$(trackId);
+    });
   }
 
   getTrackInfo$(trackId: number) {
