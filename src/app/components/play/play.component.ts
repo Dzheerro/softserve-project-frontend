@@ -73,6 +73,7 @@ export class PlayComponent implements OnInit, AfterViewInit {
   }
 
   switchTrack(forward: boolean) {
+    this.pauseTrack();
     if (forward) {
         this.trackId++;
         this.trackUrl = '';
