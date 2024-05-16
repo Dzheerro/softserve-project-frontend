@@ -36,7 +36,7 @@
                     fill="black" />
             </svg>
         </button>
-        <button class="wrapper__buttons__arrow-left">
+        <button class="wrapper__buttons__arrow-left" (click)="switchTrack(false)">
             <svg width="130" height="68" viewBox="0 0 130 68" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M61.2609 36.4864C58.995 35.412 58.9639 32.1992 61.2086 31.0874L103.322 10.2287C105.305 9.24655 107.635 10.6786 107.657 12.8925L108.054 53.9088C108.076 56.1227 105.774 57.593 103.772 56.6439L61.2609 36.4864Z"
@@ -63,7 +63,7 @@
         </button>
 
 
-        <button class="wrapper__buttons__arrow-rigth">
+        <button class="wrapper__buttons__arrow-rigth" (click)="switchTrack(true)">
             <svg width="131" height="67" viewBox="0 0 131 67" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M69.1797 30.5421C71.4393 31.6278 71.4517 34.8407 69.2005 35.9413L26.9656 56.5895C24.977 57.5618 22.6553 56.1181 22.6468 53.9041L22.4888 12.8865C22.4803 10.6725 24.7908 9.21362 26.7868 10.1727L69.1797 30.5421Z"
