@@ -23,10 +23,10 @@ export class ArtistHomePageComponent implements OnInit{
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      const artistId = +params['id'];
-      this.getInfoForSomeArtist$(artistId);
-      this.getTrackInfoForSomeArtist$(artistId);
-      this.getAlbumInfoAboutArtist$();
+      this.artistId = +params['id'];
+      this.getInfoForSomeArtist$(this.artistId);
+
+      this.getInfoAboutArtist$(this.artistId);
     });
   }
   
@@ -36,16 +36,12 @@ export class ArtistHomePageComponent implements OnInit{
     });
   }
   
-  getTrackInfoForSomeArtist$(id: number) {
-    this.actionService$.getTrackInfoForSomeArtist(id).subscribe((result: any) => {
-        this.artistTracks = result.data.tracks
-    });
-  }
-  
-  getAlbumInfoAboutArtist$() {
-    this.actionService$.getAlbumInfoAboutArtist().subscribe( (result: any) => {
-      this.artistAlbums = result.data;
+  getInfoAboutArtist$(artistId: number) {
+    this.actionService$.getTrackInfoForSomeArtist(artistId).subscribe( (response:any) => {
+      console.log(response.data);
+      
+      this.artistAlbums = response.data.albums;
+      this.artistTracks = response.data.tracks;
     })
   }
-
 }
