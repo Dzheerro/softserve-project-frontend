@@ -6,8 +6,6 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   imports: [],
   templateUrl: './slider.component.html',
   styleUrl: './slider.component.scss',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class SliderComponent {
-
-}
+export class SliderComponent {}

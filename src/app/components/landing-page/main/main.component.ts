@@ -8,11 +8,14 @@ import { MediaComponent } from '../media/media.component';
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [NavbarComponent, SliderComponent, FooterComponent, CommonModule, MediaComponent],
+  imports: [
+    NavbarComponent,
+    SliderComponent,
+    FooterComponent,
+    CommonModule,
+    MediaComponent,
+  ],
   templateUrl: './main.component.html',
-  styleUrl: './main.component.scss'
+  styleUrl: './main.component.scss',
 })
-
-export class MainComponent {
-
-}
+export class MainComponent {}

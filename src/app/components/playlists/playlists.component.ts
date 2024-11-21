@@ -10,10 +10,9 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [NavbarComponent, FooterComponent, RouterLink, CommonModule],
   templateUrl: './playlists.component.html',
-  styleUrl: './playlists.component.scss'
+  styleUrl: './playlists.component.scss',
 })
-export class PlaylistsComponent implements OnInit{
-
+export class PlaylistsComponent implements OnInit {
   playlists: any;
 
   constructor(private actionService$: ActionsTrackService) {}
@@ -23,9 +22,8 @@ export class PlaylistsComponent implements OnInit{
   }
 
   getPlaylist$() {
-    this.actionService$.getPlaylist().subscribe( (result: any) => {
+    this.actionService$.getPlaylist().subscribe((result: any) => {
       this.playlists = result.data;
-    })
-  };
-
+    });
+  }
 }

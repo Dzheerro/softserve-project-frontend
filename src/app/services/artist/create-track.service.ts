@@ -3,13 +3,12 @@ import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CreateTrackService {
-
   private baseUrl: string = environment.baseUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   addTrack(title: string, file: File) {
     const formData = new FormData();

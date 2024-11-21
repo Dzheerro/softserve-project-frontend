@@ -8,10 +8,9 @@ describe('ArtistHomePageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ArtistHomePageComponent]
-    })
-    .compileComponents();
-    
+      imports: [ArtistHomePageComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ArtistHomePageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

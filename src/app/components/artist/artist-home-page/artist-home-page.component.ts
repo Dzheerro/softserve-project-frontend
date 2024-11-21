@@ -10,17 +10,19 @@ import { ActivatedRoute, Params, RouterLink } from '@angular/router';
   standalone: true,
   imports: [CommonModule, NavbarComponent, FooterComponent, RouterLink],
   templateUrl: './artist-home-page.component.html',
-  styleUrl: './artist-home-page.component.scss'
+  styleUrl: './artist-home-page.component.scss',
 })
-export class ArtistHomePageComponent implements OnInit{
-
+export class ArtistHomePageComponent implements OnInit {
   artistId!: number;
-  artistPlaysCount!: number
+  artistPlaysCount!: number;
   artistUsername!: string;
   artistTracks: any;
   artistAlbums: any;
-  
-  constructor(private actionService$: ActionsTrackService, private route: ActivatedRoute) {}
+
+  constructor(
+    private actionService$: ActionsTrackService,
+    private route: ActivatedRoute,
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -30,20 +32,20 @@ export class ArtistHomePageComponent implements OnInit{
       this.getInfoAboutArtist$(this.artistId);
     });
   }
-  
+
   getInfoForSomeArtist$(id: number) {
     this.actionService$.getInfoForSomeArtist(id).subscribe((result: any) => {
-      this.artistUsername = result.data.user.username
+      this.artistUsername = result.data.user.username;
       this.artistPlaysCount = result.data.total_listens;
     });
   }
-  
+
   getInfoAboutArtist$(artistId: number) {
-    this.actionService$.getTrackInfoForSomeArtist(artistId).subscribe( (response:any) => {
-      
-      
-      this.artistAlbums = response.data.albums;
-      this.artistTracks = response.data.tracks;
-    })
+    this.actionService$
+      .getTrackInfoForSomeArtist(artistId)
+      .subscribe((response: any) => {
+        this.artistAlbums = response.data.albums;
+        this.artistTracks = response.data.tracks;
+      });
   }
 }

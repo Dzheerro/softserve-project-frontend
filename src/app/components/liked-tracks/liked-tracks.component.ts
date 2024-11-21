@@ -10,33 +10,30 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [NavbarComponent, FooterComponent, CommonModule, RouterLink],
   templateUrl: './liked-tracks.component.html',
-  styleUrl: './liked-tracks.component.scss'
+  styleUrl: './liked-tracks.component.scss',
 })
-export class LikedTracksComponent implements OnInit{
-
+export class LikedTracksComponent implements OnInit {
   trackTitle!: string;
-  trackId!: number
-  trackFile: any
+  trackId!: number;
+  trackFile: any;
 
-  tracks!: any
+  tracks!: any;
 
-  constructor (private trackService: ActionsTrackService) {}
+  constructor(private trackService: ActionsTrackService) {}
 
   ngOnInit(): void {
-    this.getLikedTracks$()
+    this.getLikedTracks$();
   }
 
-  getLikedTracks$ () {
-    this.trackService.getLikedTracks().subscribe( (response) => {
+  getLikedTracks$() {
+    this.trackService.getLikedTracks().subscribe((response) => {
       this.tracks = response;
-    })
+    });
   }
 
   removeLike(trackId: number) {
-    this.trackService.removeLike(trackId).subscribe( (response) => {
+    this.trackService.removeLike(trackId).subscribe((response) => {
       console.log(response);
-      
-    })
+    });
   }
-
 }

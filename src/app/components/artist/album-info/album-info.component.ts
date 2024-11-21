@@ -10,18 +10,20 @@ import { ActivatedRoute, Params } from '@angular/router';
   standalone: true,
   imports: [CommonModule, NavbarComponent, FooterComponent],
   templateUrl: './album-info.component.html',
-  styleUrl: './album-info.component.scss'
+  styleUrl: './album-info.component.scss',
 })
-export class AlbumInfoComponent implements OnInit{
+export class AlbumInfoComponent implements OnInit {
+  constructor(
+    private actionService$: ActionsTrackService,
+    private route: ActivatedRoute,
+  ) {}
 
-  constructor(private actionService$: ActionsTrackService, private route: ActivatedRoute) {}
-
-  albumId!: number
+  albumId!: number;
   albumName!: string;
   albums: any;
 
   ngOnInit(): void {
-    this.route.params.subscribe( (params: Params) => {
+    this.route.params.subscribe((params: Params) => {
       this.albumId = +params['id'];
     });
 
@@ -29,20 +31,24 @@ export class AlbumInfoComponent implements OnInit{
   }
 
   getAlbumById(id: number) {
-    this.actionService$.getCertainAlbum(id).subscribe( (result: any) => {
+    this.actionService$.getCertainAlbum(id).subscribe((result: any) => {
       this.albums = result.data;
       this.albumName = result.data.name;
-    })
-  };
+    });
+  }
 
   formatDate(dateString: string): string {
     const date = new Date(dateString);
-    const formattedDate = this.formatNumber(date.getDate(), 2) + '.' + this.formatNumber(date.getMonth() + 1, 2) + '.' + date.getFullYear().toString().slice(-2);
+    const formattedDate =
+      this.formatNumber(date.getDate(), 2) +
+      '.' +
+      this.formatNumber(date.getMonth() + 1, 2) +
+      '.' +
+      date.getFullYear().toString().slice(-2);
     return formattedDate;
-  };
+  }
 
   private formatNumber(num: number, length: number): string {
     return ('0' + num).slice(-length);
-  };
-  
+  }
 }

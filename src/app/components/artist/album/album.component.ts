@@ -10,11 +10,13 @@ import { ActionsTrackService } from '../../../services/actions/actions.service';
   standalone: true,
   imports: [CommonModule, NavbarComponent, FooterComponent, RouterLink],
   templateUrl: './album.component.html',
-  styleUrl: './album.component.scss'
+  styleUrl: './album.component.scss',
 })
-export class AlbumComponent implements OnInit{
-
-  constructor(private actionService$: ActionsTrackService, private route: ActivatedRoute) {}
+export class AlbumComponent implements OnInit {
+  constructor(
+    private actionService$: ActionsTrackService,
+    private route: ActivatedRoute,
+  ) {}
 
   albums: any;
 
@@ -23,8 +25,8 @@ export class AlbumComponent implements OnInit{
   }
 
   getAlbums() {
-    this.actionService$.getAlbumInfoAboutArtist().subscribe( (result: any) => {      
+    this.actionService$.getAlbumInfoAboutArtist().subscribe((result: any) => {
       this.albums = result.data;
-    })
+    });
   }
 }

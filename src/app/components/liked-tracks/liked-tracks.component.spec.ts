@@ -8,10 +8,9 @@ describe('LikedTracksComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LikedTracksComponent]
-    })
-    .compileComponents();
-    
+      imports: [LikedTracksComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(LikedTracksComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

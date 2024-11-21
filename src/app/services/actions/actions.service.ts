@@ -3,14 +3,12 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class ActionsTrackService {
-
   baseUrl: string = environment.baseUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   showTrack() {
     return this.http.get(this.baseUrl + 'api/v1/tracks');
@@ -25,11 +23,14 @@ export class ActionsTrackService {
   }
 
   getTrackFile(trackId: number) {
-    return this.http.get(this.baseUrl + `api/v1/tracks/?track_id_file=${trackId}`, {responseType: 'blob'})
+    return this.http.get(
+      this.baseUrl + `api/v1/tracks/?track_id_file=${trackId}`,
+      { responseType: 'blob' },
+    );
   }
 
   addLike(trackId: number) {
-    const requestData = {track_id: trackId};
+    const requestData = { track_id: trackId };
     return this.http.post(this.baseUrl + 'api/v1/like_tracks/', requestData);
   }
 
@@ -37,7 +38,7 @@ export class ActionsTrackService {
     const requestData = { track_id: trackId };
     return this.http.put(this.baseUrl + 'api/v1/like_tracks/', requestData);
   }
-    
+
   getLikedTracks() {
     return this.http.get(this.baseUrl + 'api/v1/like_tracks/');
   }
@@ -54,11 +55,11 @@ export class ActionsTrackService {
   getInfoForSomeArtist(id: number) {
     return this.http.get(`${this.baseUrl}api/v1/user/artists/${id}/`);
   }
-  
+
   getTrackInfoForSomeArtist(id: number) {
     return this.http.get(`${this.baseUrl}api/v1/page_artist/${id}/`);
   }
-  
+
   getArtistTracksInfo() {
     return this.http.get(`${this.baseUrl}api/v1/track_by_artist`);
   }
@@ -71,7 +72,7 @@ export class ActionsTrackService {
     return this.http.get(`${this.baseUrl}api/v1/playlists/${id}`);
   }
 
-  createAlbum(albumData: { name: any, description: any }) {
+  createAlbum(albumData: { name: any; description: any }) {
     return this.http.post(`${this.baseUrl}api/v1/album/`, albumData);
   }
 
@@ -84,20 +85,25 @@ export class ActionsTrackService {
   }
 
   putTrackIntoAlbum(id: number, track_id: number) {
-    const requestData = {track_id: track_id}
-    return this.http.put(`${this.baseUrl}api/v1/album/${id}/`, requestData)
+    const requestData = { track_id: track_id };
+    return this.http.put(`${this.baseUrl}api/v1/album/${id}/`, requestData);
   }
 
   searchByTracks(track_name: string) {
-    return this.http.get(`${this.baseUrl}api/v1/tracks/?track_name=${track_name}`)
+    return this.http.get(
+      `${this.baseUrl}api/v1/tracks/?track_name=${track_name}`,
+    );
   }
 
   searchByArtist(artist_name: string) {
-    return this.http.get(`${this.baseUrl}api/v1/user/artists/?artist_name=${artist_name}`);
+    return this.http.get(
+      `${this.baseUrl}api/v1/user/artists/?artist_name=${artist_name}`,
+    );
   }
 
   searchByAlbums(album_name: string) {
-    return this.http.get(`${this.baseUrl}api/v1/album/?album_name=${album_name}`)
+    return this.http.get(
+      `${this.baseUrl}api/v1/album/?album_name=${album_name}`,
+    );
   }
-
 }

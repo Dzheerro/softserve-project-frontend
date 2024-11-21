@@ -8,14 +8,13 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './media.component.html',
-  styleUrl: './media.component.scss'
+  styleUrl: './media.component.scss',
 })
 export class MediaComponent implements OnInit {
-
   tracks: any;
   artists: any;
 
-  constructor(private showTrackService: ActionsTrackService) { }
+  constructor(private showTrackService: ActionsTrackService) {}
 
   ngOnInit(): void {
     this.getArtists();
@@ -25,12 +24,12 @@ export class MediaComponent implements OnInit {
   getTracks() {
     this.showTrackService.showTrack().subscribe((result) => {
       this.tracks = result;
-    })
-  };
+    });
+  }
 
   getArtists() {
-    this.showTrackService.getArtist().subscribe((result: any) => {      
+    this.showTrackService.getArtist().subscribe((result: any) => {
       this.artists = result.data;
-    })
-  };
+    });
+  }
 }

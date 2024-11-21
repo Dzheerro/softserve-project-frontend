@@ -43,3 +43,5 @@ Thumbs.db
 
 # Back-End
 /backend
+.nx/cache
+.nx/workspace-data

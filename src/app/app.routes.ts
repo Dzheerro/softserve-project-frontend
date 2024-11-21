@@ -15,28 +15,26 @@ import { UserHomePageComponent } from './components/user/user-home-page/user-hom
 import { PlaylistInfoComponent } from './components/playlist-info/playlist-info.component';
 import { AlbumInfoComponent } from './components/artist/album-info/album-info.component';
 
-
 export const routes: Routes = [
-    { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
-    
-    { path: 'dashboard', component: MainComponent},
-    { path: 'artist/create-track', component: CreateTrackComponent},
-    { path: 'create-playlist', component: CreatePlaylistComponent},
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 
-    { path: 'signup', component: RegisterComponent },
-    { path: 'login', component: LoginComponent },
-    
-    { path: 'playlists', component: PlaylistsComponent},
-    { path: 'playlist/:id', component: PlaylistInfoComponent},
-    { path: 'likes', component: LikedTracksComponent},
-    { path: 'player/:id', component: PlayComponent},
+  { path: 'dashboard', component: MainComponent },
+  { path: 'artist/create-track', component: CreateTrackComponent },
+  { path: 'create-playlist', component: CreatePlaylistComponent },
 
-    { path: 'artist/create-album', component: CreateAlbumComponent},
-    { path: 'artist/albums', component: AlbumComponent},
-    { path: 'artist/album/:id', component: AlbumInfoComponent},
-    { path: 'artist/:id', component: ArtistHomePageComponent},
-    { path: 'user/:id', component: UserHomePageComponent},
+  { path: 'signup', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
 
-    { path: '**', redirectTo: '/dashboard'}
-    
+  { path: 'playlists', component: PlaylistsComponent },
+  { path: 'playlist/:id', component: PlaylistInfoComponent },
+  { path: 'likes', component: LikedTracksComponent },
+  { path: 'player/:id', component: PlayComponent },
+
+  { path: 'artist/create-album', component: CreateAlbumComponent },
+  { path: 'artist/albums', component: AlbumComponent },
+  { path: 'artist/album/:id', component: AlbumInfoComponent },
+  { path: 'artist/:id', component: ArtistHomePageComponent },
+  { path: 'user/:id', component: UserHomePageComponent },
+
+  { path: '**', redirectTo: '/dashboard' },
 ];

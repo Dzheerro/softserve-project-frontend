@@ -18,14 +18,22 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { ActionsTrackService } from '../../../services/actions/actions.service';
 
-
-
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, CommonModule, FormsModule, TieredMenuModule, ButtonModule, AvatarModule, BadgeModule, AutoCompleteModule, FloatLabelModule],
+  imports: [
+    RouterLink,
+    CommonModule,
+    FormsModule,
+    TieredMenuModule,
+    ButtonModule,
+    AvatarModule,
+    BadgeModule,
+    AutoCompleteModule,
+    FloatLabelModule,
+  ],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+  styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent implements OnInit {
   username: string | null;
@@ -44,7 +52,12 @@ export class NavbarComponent implements OnInit {
 
   baseUrl: string = environment.baseUrl;
 
-  constructor(private userDataJwtService: UserDataJwtService, private authService: AuthService, private router: Router, private actionService$: ActionsTrackService) {
+  constructor(
+    private userDataJwtService: UserDataJwtService,
+    private authService: AuthService,
+    private router: Router,
+    private actionService$: ActionsTrackService,
+  ) {
     this.username = this.userDataJwtService.getUsername();
     this.profileType = this.userDataJwtService.getUserProfileType();
     this.userId = this.userDataJwtService.getUserId();
@@ -55,69 +68,74 @@ export class NavbarComponent implements OnInit {
       {
         label: 'Liked Tracks',
         icon: 'pi pi-thumbs-up',
-        command: () => this.router.navigate(['/likes'])
+        command: () => this.router.navigate(['/likes']),
       },
       {
         label: 'Playlists',
         icon: 'pi pi-list',
-        command: () => this.router.navigate(['/playlists'])
+        command: () => this.router.navigate(['/playlists']),
       },
       {
         label: 'Albums',
         icon: 'pi pi-objects-column',
-        command: () => this.router.navigate(['/artist/albums'])
+        command: () => this.router.navigate(['/artist/albums']),
       },
       {
         label: 'Settings',
-        icon: 'pi pi-sliders-h'
+        icon: 'pi pi-sliders-h',
       },
       {
         label: 'Log Out',
         icon: 'pi pi-sign-out',
-        command: () => this.logOut()
+        command: () => this.logOut(),
       },
     ];
   }
 
   search(event: any) {
     const query = event.query;
-    
+
     this.searchByTracks$(query);
     this.searchByAlbums$(query);
     this.searchByArtist$(query);
-    
+
     this.searchResults = [
-      ...(this.searchTrack ? this.searchTrack.map((track: any) => track.title) : []),
-      ...(this.searchAlbum ? this.searchAlbum.map((album: any) => album.name) : []),
-      ...(this.searchArtist ? this.searchArtist.map((artist: any) => artist.username) : [])
+      ...(this.searchTrack
+        ? this.searchTrack.map((track: any) => track.title)
+        : []),
+      ...(this.searchAlbum
+        ? this.searchAlbum.map((album: any) => album.name)
+        : []),
+      ...(this.searchArtist
+        ? this.searchArtist.map((artist: any) => artist.username)
+        : []),
     ];
   }
 
   searchByTracks$(track_name: string) {
-    this.actionService$.searchByTracks(track_name).subscribe( (result: any) => {
+    this.actionService$.searchByTracks(track_name).subscribe((result: any) => {
       this.searchTrack = result.data;
-    })
+    });
   }
 
   searchByAlbums$(album_name: string) {
-    this.actionService$.searchByAlbums(album_name).subscribe( (result: any) => {
+    this.actionService$.searchByAlbums(album_name).subscribe((result: any) => {
       this.searchAlbum = result.data;
-    })
+    });
   }
 
   searchByArtist$(artist_name: string) {
-    this.actionService$.searchByArtist(artist_name).subscribe( (result: any) => {
+    this.actionService$.searchByArtist(artist_name).subscribe((result: any) => {
       this.searchArtist = result.data;
-    })
+    });
   }
-
 
   isArtist(): boolean {
     return this.profileType === 'Artist';
   }
 
   isListener(): boolean {
-    return this.profileType === 'Listener'
+    return this.profileType === 'Listener';
   }
 
   isLoggedIn(): boolean {
@@ -133,6 +151,6 @@ export class NavbarComponent implements OnInit {
       localStorage.removeItem('profile_type');
       localStorage.removeItem('username');
       this.router.navigate(['/login']);
-    })
+    });
   }
 }
